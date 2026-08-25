@@ -54,6 +54,7 @@
 
       <div class="hero-proof">
         <div><strong>~300 ms</strong><span>trivial Windows command</span></div>
+        <div><strong>~380 ms</strong><span>Windows desktop session</span></div>
         <div><strong>&lt; 1 GB</strong><span>minimal base runtime</span></div>
         <div><strong>0</strong><span>VMs to babysit</span></div>
       </div>
@@ -137,7 +138,7 @@
         <div class="section-heading center-heading">
           <div class="eyebrow">Windows desktop, headless</div>
           <h2>Build it. Launch it. See it. Use it.</h2>
-          <p>WinQuick can run real WPF and WinForms applications, capture the rendered UI and expose semantic Windows UI Automation controls to coding agents.</p>
+          <p>WinQuick can run real WPF and WinForms applications, capture the rendered UI and expose semantic Windows UI Automation controls to coding agents. A desktop session starts in about 380 ms and every step after that takes tens of milliseconds.</p>
         </div>
 
         <div class="desktop-demo">
@@ -165,7 +166,7 @@
             </div>
             <div class="automation-card">
               <span class="automation-label">SEMANTIC UI TREE</span>
-              <code>winquick desktop tree --json</code>
+              <code>winquick desktop tree --title &quot;Device Configuration&quot;</code>
             </div>
             <div class="automation-card active-card">
               <span class="automation-label">INTERACT</span>
@@ -257,12 +258,12 @@
         <div>
           <div class="eyebrow">Get started</div>
           <h2>From zero to real Windows<br>in two commands.</h2>
-          <p>WinQuick handles the runtime setup and verifies it with a real Windows command before declaring it ready.</p>
+          <p>WinQuick handles the runtime setup and verifies it with a real Windows command before declaring it ready. Download the release archive for Apple Silicon; a Homebrew tap follows.</p>
         </div>
         <div class="install-terminal terminal">
           <div class="terminal-bar"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div>
           <div class="terminal-body">
-            <div><span class="prompt">$</span> brew install Carlboms-Data-AB/tap/winquick</div>
+            <div><span class="prompt">$</span> tar -xzf winquick-0.2.0-darwin-arm64.tar.gz</div>
             <div><span class="prompt">$</span> winquick setup</div>
             <div class="terminal-output spaced">Windows runtime installed.<br>Testing the runtime...<br>Microsoft Windows [Version 10.0.26100.8972]</div>
             <div class="success-line">Ready.</div>
