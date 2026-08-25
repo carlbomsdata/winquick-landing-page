@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b0f">
+  <meta name="description" content="WinQuick — Instant disposable Windows environments. Run real Windows commands, builds, tests, and desktop automation locally without managing a VM.">
+  <meta property="og:title" content="WinQuick — Instant disposable Windows environments">
+  <meta property="og:description" content="Real Windows. Disposable by default. Ready in milliseconds.">
+  <meta property="og:type" content="website">
+  <title>WinQuick — Instant disposable Windows environments</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="WinQuick home">
+      <span class="brand-mark">WQ</span>
+      <span>WinQuick</span>
+    </a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#why">Why WinQuick</a>
+      <a href="#desktop">Desktop</a>
+      <a href="#performance">Performance</a>
+      <a href="#install">Install</a>
+    </nav>
+    <a class="button button-small button-ghost" href="https://github.com/Carlboms-Data-AB/winquick">GitHub</a>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="eyebrow"><span class="pulse"></span> Real Windows, without the VM ceremony</div>
+      <h1>Instant disposable<br><span>Windows environments.</span></h1>
+      <p class="hero-copy">Run real Windows commands, builds, tests and desktop apps locally. Every run starts clean. No VM to manage. No remote Windows machine. No waiting for a desktop to boot.</p>
+
+      <div class="hero-actions">
+        <a class="button button-primary" href="#install">Get WinQuick</a>
+        <a class="button button-secondary" href="https://github.com/Carlboms-Data-AB/winquick">View source</a>
+      </div>
+
+      <div class="terminal terminal-hero" aria-label="WinQuick command example">
+        <div class="terminal-bar">
+          <div class="terminal-dots"><span></span><span></span><span></span></div>
+          <span class="terminal-title">~/project</span>
+          <button class="copy-button" data-copy="winquick run -- cmd /c ver" aria-label="Copy command">Copy</button>
+        </div>
+        <div class="terminal-body">
+          <div><span class="prompt">$</span> <span class="command">winquick run -- cmd /c ver</span></div>
+          <div class="terminal-output">Microsoft Windows [Version 10.0.26100.8972]</div>
+          <div class="terminal-meta"><span>real Windows kernel</span><span>~300 ms</span><span>discarded after run</span></div>
+        </div>
+      </div>
+
+      <div class="hero-proof">
+        <div><strong>~300 ms</strong><span>trivial Windows command</span></div>
+        <div><strong>&lt; 1 GB</strong><span>minimal base runtime</span></div>
+        <div><strong>0</strong><span>VMs to babysit</span></div>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="WinQuick capabilities">
+      <div class="ticker-track">
+        <span>CMD</span><i></i><span>PowerShell 7</span><i></i><span>.NET 10</span><i></i><span>WPF</span><i></i><span>WinForms</span><i></i><span>UI Automation</span><i></i><span>Artifacts</span><i></i><span>Disposable</span><i></i><span>Offline by default</span>
+      </div>
+    </section>
+
+    <section class="section section-shell" id="why">
+      <div class="section-heading">
+        <div class="eyebrow">Windows as a development target</div>
+        <h2>It should feel like running a process.<br>Not operating another computer.</h2>
+        <p>WinQuick hides the virtualization layer and gives developers and coding agents a simple primitive: run this inside real Windows and return the result.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card feature-card-large">
+          <div class="feature-number">01</div>
+          <h3>Real Windows</h3>
+          <p>Not Wine. Not mocked APIs. Your command executes against a genuine Windows ARM64 kernel with native Windows filesystem, registry, process and API behaviour.</p>
+          <div class="mini-code"><span>winquick run --</span> your-command.exe</div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-number">02</div>
+          <h3>Disposable by default</h3>
+          <p>Files, registry changes and environment mutations disappear after every run. The base environment stays pristine.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-number">03</div>
+          <h3>Built for iteration speed</h3>
+          <p>A prepared Windows state restores in milliseconds. Fast enough to sit inside edit → test → fix loops without feeling like a VM.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-number">04</div>
+          <h3>Capabilities, not bloated images</h3>
+          <p>Add only what a workload needs: PowerShell, .NET runtime, .NET SDK, desktop support and dependency caches remain modular.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-number">05</div>
+          <h3>Agent-native, CLI-first</h3>
+          <p>Claude Code, Codex and other agents can use the same CLI humans use. No special VM API and no remote desktop orchestration required.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-shell build-section">
+      <div class="split-heading">
+        <div>
+          <div class="eyebrow">Build & test</div>
+          <h2>Develop Windows software from your Mac.</h2>
+        </div>
+        <p>Cross-build when it makes sense. Build inside Windows when it matters. Either way, WinQuick gives your tests the Windows kernel they actually need.</p>
+      </div>
+
+      <div class="code-showcase">
+        <div class="code-tabs" role="tablist" aria-label="Code examples">
+          <button class="code-tab active" data-tab="dotnet" role="tab">.NET</button>
+          <button class="code-tab" data-tab="powershell" role="tab">PowerShell</button>
+          <button class="code-tab" data-tab="artifacts" role="tab">Artifacts</button>
+        </div>
+        <div class="code-panel active" data-panel="dotnet">
+          <div class="code-line"><span class="prompt">$</span> winquick run -w . -- dotnet test</div>
+          <div class="code-output">Passed! 9 tests · 0 failed</div>
+        </div>
+        <div class="code-panel" data-panel="powershell">
+          <div class="code-line"><span class="prompt">$</span> winquick run -- pwsh -Command '$PSVersionTable.PSVersion'</div>
+          <div class="code-output">7.6.5</div>
+        </div>
+        <div class="code-panel" data-panel="artifacts">
+          <div class="code-line"><span class="prompt">$</span> winquick run -w . -a "bin/Release/**" -- dotnet publish -c Release</div>
+          <div class="code-output">Artifacts → ./winquick-artifacts/</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section desktop-section" id="desktop">
+      <div class="section-shell">
+        <div class="section-heading center-heading">
+          <div class="eyebrow">Windows desktop, headless</div>
+          <h2>Build it. Launch it. See it. Use it.</h2>
+          <p>WinQuick can run real WPF and WinForms applications, capture the rendered UI and expose semantic Windows UI Automation controls to coding agents.</p>
+        </div>
+
+        <div class="desktop-demo">
+          <div class="fake-window">
+            <div class="fake-titlebar">
+              <span class="fake-app-icon">WQ</span>
+              <span>Device Configuration</span>
+              <div class="window-controls"><b>—</b><b>□</b><b>×</b></div>
+            </div>
+            <div class="fake-content">
+              <label>Device name</label>
+              <div class="fake-input">PLC-01</div>
+              <label>Mode</label>
+              <div class="fake-select">Standard <span>⌄</span></div>
+              <label class="fake-check"><span class="checkbox checked">✓</span> Enable logging</label>
+              <button class="fake-save">Save</button>
+              <div class="fake-status"><span></span>Saved: PLC-01</div>
+            </div>
+          </div>
+
+          <div class="automation-stack">
+            <div class="automation-card">
+              <span class="automation-label">SCREENSHOT</span>
+              <code>winquick desktop screenshot app.png</code>
+            </div>
+            <div class="automation-card">
+              <span class="automation-label">SEMANTIC UI TREE</span>
+              <code>winquick desktop tree --json</code>
+            </div>
+            <div class="automation-card active-card">
+              <span class="automation-label">INTERACT</span>
+              <code>winquick desktop click --automation-id SaveButton</code>
+            </div>
+            <div class="automation-card">
+              <span class="automation-label">VERIFY</span>
+              <code>winquick desktop get --automation-id StatusText</code>
+              <span class="result">Saved: PLC-01</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-shell" id="performance">
+      <div class="split-heading">
+        <div>
+          <div class="eyebrow">Quick means quick</div>
+          <h2>Windows in the loop.<br>Without breaking your flow.</h2>
+        </div>
+        <p>WinQuick restores a prepared Windows environment instead of cold-booting a full workstation for every command. The result feels closer to a local tool than a virtual machine.</p>
+      </div>
+
+      <div class="benchmark-grid">
+        <div class="benchmark benchmark-primary">
+          <span class="bench-label">CMD</span>
+          <strong>~300<span>ms</span></strong>
+          <small>trivial warm command</small>
+        </div>
+        <div class="benchmark">
+          <span class="bench-label">.NET</span>
+          <strong>~380<span>ms</span></strong>
+          <small>small framework-dependent app</small>
+        </div>
+        <div class="benchmark">
+          <span class="bench-label">POWERSHELL</span>
+          <strong>~640<span>ms</span></strong>
+          <small>PowerShell 7 expression</small>
+        </div>
+        <div class="benchmark">
+          <span class="bench-label">BASE</span>
+          <strong>763<span>MiB</span></strong>
+          <small>minimal Windows runtime</small>
+        </div>
+      </div>
+      <p class="benchmark-note">Current measured Apple Silicon development results. Exact timings vary by machine, command and enabled capabilities.</p>
+    </section>
+
+    <section class="section section-shell agents-section">
+      <div class="agent-card">
+        <div class="agent-copy">
+          <div class="eyebrow">For coding agents</div>
+          <h2>Give your agent an actual Windows machine. For milliseconds.</h2>
+          <p>An agent can often reason about a Windows bug from source. WinQuick lets it verify the fix against real Windows — including WPF and WinForms UI.</p>
+          <div class="agent-flow">
+            <span>Edit</span><i>→</i><span>Run in Windows</span><i>→</i><span>Inspect</span><i>→</i><span>Fix</span><i>→</i><span>Verify</span>
+          </div>
+        </div>
+        <div class="agent-terminal terminal">
+          <div class="terminal-bar"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Claude Code</span></div>
+          <div class="terminal-body compact">
+            <div class="muted">I'll verify this in Windows.</div>
+            <div><span class="prompt">$</span> winquick run -w . -- dotnet test</div>
+            <div class="error-line">Failed: PathTests.NormalizePath</div>
+            <div class="muted">The implementation assumes POSIX separators. Fixing it.</div>
+            <div><span class="prompt">$</span> winquick run -w . -- dotnet test</div>
+            <div class="success-line">Passed! 9 tests · 0 failed</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-shell future-section">
+      <div class="section-heading">
+        <div class="eyebrow">One CLI. Any host.</div>
+        <h2>Cross-platform by design.</h2>
+        <p>Apple Silicon macOS is the first supported host. The architecture is designed to carry the same WinQuick experience to Linux and Windows using native host acceleration.</p>
+      </div>
+      <div class="platform-row">
+        <div class="platform active-platform"><span></span><strong>macOS</strong><small>HVF · available first</small></div>
+        <div class="platform"><span>◇</span><strong>Linux</strong><small>KVM · planned</small></div>
+        <div class="platform"><span>⊞</span><strong>Windows</strong><small>WHPX · planned</small></div>
+      </div>
+    </section>
+
+    <section class="section install-section" id="install">
+      <div class="section-shell install-shell">
+        <div>
+          <div class="eyebrow">Get started</div>
+          <h2>From zero to real Windows<br>in two commands.</h2>
+          <p>WinQuick handles the runtime setup and verifies it with a real Windows command before declaring it ready.</p>
+        </div>
+        <div class="install-terminal terminal">
+          <div class="terminal-bar"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div>
+          <div class="terminal-body">
+            <div><span class="prompt">$</span> brew install Carlboms-Data-AB/tap/winquick</div>
+            <div><span class="prompt">$</span> winquick setup</div>
+            <div class="terminal-output spaced">Windows runtime installed.<br>Testing the runtime...<br>Microsoft Windows [Version 10.0.26100.8972]</div>
+            <div class="success-line">Ready.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta section-shell">
+      <div class="final-card">
+        <div>
+          <span class="brand-lockup"><span class="brand-mark">WQ</span> WinQuick</span>
+          <h2>Real Windows.<br>Ready in milliseconds.</h2>
+        </div>
+        <div class="final-actions">
+          <a class="button button-primary" href="https://github.com/Carlboms-Data-AB/winquick">Get WinQuick on GitHub</a>
+          <span>Open source · Apache-2.0</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer section-shell">
+    <span>© <span id="year"></span> Carlboms Data AB</span>
+    <span>WinQuick — Instant disposable Windows environments.</span>
+    <a href="https://github.com/Carlboms-Data-AB/winquick">GitHub</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
