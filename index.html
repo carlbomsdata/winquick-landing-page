@@ -222,6 +222,8 @@
           <div class="eyebrow">For coding agents</div>
           <h2>Give your agent an actual Windows machine. For milliseconds.</h2>
           <p>An agent can often reason about a Windows bug from source. WinQuick lets it verify the fix against real Windows — including WPF and WinForms UI.</p>
+          <p>WinQuick is a native MCP server, so agents get structured tools rather than shell syntax: build and test on real Windows, launch a WPF or WinForms application, read and drive it through Microsoft UI Automation, and capture real Windows screenshots. Verified with Claude Code.</p>
+          <div class="terminal-body compact" style="margin:0 0 18px"><div><span class="prompt">$</span> claude mcp add winquick -- winquick mcp</div></div>
           <div class="agent-flow">
             <span>Edit</span><i>→</i><span>Run in Windows</span><i>→</i><span>Inspect</span><i>→</i><span>Fix</span><i>→</i><span>Verify</span>
           </div>
