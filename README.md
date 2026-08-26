@@ -1,6 +1,6 @@
 # WinQuick landing page
 
-Static landing page for [WinQuick](https://github.com/Carlboms-Data-AB/winquick) — **Instant disposable Windows environments.**
+Static landing page for [WinQuick](https://github.com/carlbomsdata/winquick) — **Instant disposable Windows environments.**
 
 ## Local preview
 
