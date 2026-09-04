@@ -205,7 +205,7 @@ h3 { font-size: 21px; font-weight: 600; letter-spacing: -.025em; }
 
 .hero-proof {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   max-width: 820px;
   margin: 38px auto 0;
   overflow: hidden;
@@ -352,6 +352,9 @@ h3 { font-size: 21px; font-weight: 600; letter-spacing: -.025em; }
   .benchmark:nth-child(2) { border-right: 0; }
   .benchmark:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .platform-row { grid-template-columns: 1fr; }
+  .hero-proof { grid-template-columns: repeat(2, 1fr); }
+  .hero-proof div:nth-child(3) { border-left: 0; }
+  .hero-proof div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .agent-card { gap: 36px; }
   .final-card { align-items: flex-start; flex-direction: column; }
   .final-actions { align-items: flex-start; }
@@ -447,3 +450,33 @@ h3 { font-size: 21px; font-weight: 600; letter-spacing: -.025em; }
   .faq-item { padding: 18px 18px; }
   .hero-trust { font-size: 13px; }
 }
+
+/* --- the desktop section shows the real capture, not a drawing ------------ */
+.real-shot { margin: 0; }
+.real-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-2);
+  background: #fff;
+}
+.real-shot figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+/* The "Real Windows" card left a large empty gradient above its text; a real
+   terminal capture is better proof than blank space. */
+.feature-card-large { min-height: 0; justify-content: flex-start; }
+.feature-shot {
+  margin: 0 0 22px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: #16181d;
+}
+.feature-shot img { display: block; width: 100%; height: auto; }

@@ -90,6 +90,7 @@
       <div class="feature-grid">
         <article class="feature-card feature-card-large">
           <div class="feature-number">01</div>
+          <figure class="feature-shot"><img src="assets/screenshots/cli-run.png" width="700" height="360" alt="A WinQuick run in a terminal returning the Windows version and an exit code"></figure>
           <h3>Real Windows</h3>
           <p>Not Wine. Not mocked APIs. Your command executes against a genuine Windows ARM64 kernel with native Windows filesystem, registry, process and API behaviour.</p>
           <div class="mini-code"><span>winquick run --</span> your-command.exe</div>
@@ -121,7 +122,7 @@
       <div class="split-heading">
         <div>
           <div class="eyebrow">Build & test</div>
-          <h2>Develop Windows software from your Mac.</h2>
+          <h2>Develop Windows software on the machine you have.</h2>
         </div>
         <p>Cross-build when it makes sense. Build inside Windows when it matters. Either way, WinQuick gives your tests the Windows kernel they actually need.</p>
       </div>
@@ -159,7 +160,7 @@
 
     <section class="section desktop-section" id="desktop">
       <div class="section-shell">
-        <div class="section-heading center-heading">
+        <div class="section-heading">
           <div class="eyebrow">Windows desktop, headless</div>
           <h2>Build it. Launch it. See it. Use it.</h2>
           <p>Automated testing of a Windows GUI normally needs a Windows machine with a logged-in desktop. WinQuick builds a WPF or WinForms application, runs it in a real Windows desktop and drives it through Microsoft UI Automation — the interface Windows' own accessibility tools use. Controls are addressed by <code>AutomationId</code>, so a test does not depend on pixel positions or window layout, and a selector matching two elements is an error rather than a guess. Nothing appears on your screen: no QEMU window, no RDP, no VNC.</p>
@@ -167,22 +168,11 @@
         </div>
 
         <div class="desktop-demo">
-          <div class="fake-window">
-            <div class="fake-titlebar">
-              <span class="fake-app-icon">WQ</span>
-              <span>Device Configuration</span>
-              <div class="window-controls"><b>—</b><b>□</b><b>×</b></div>
-            </div>
-            <div class="fake-content">
-              <label>Device name</label>
-              <div class="fake-input">PLC-01</div>
-              <label>Mode</label>
-              <div class="fake-select">Standard <span>⌄</span></div>
-              <label class="fake-check"><span class="checkbox checked">✓</span> Enable logging</label>
-              <button class="fake-save">Save</button>
-              <div class="fake-status"><span></span>Saved: PLC-01</div>
-            </div>
-          </div>
+          <figure class="real-shot">
+            <img src="assets/screenshots/ui-automation.png" width="620" height="460"
+                 alt="A WPF application inside WinQuick with its text box, combo box and checkbox filled in by UI automation, and a saved status line">
+            <figcaption>Not a mock-up. The guest's own framebuffer, captured after a script typed the name, chose the department, ticked the box and pressed Save.</figcaption>
+          </figure>
 
           <div class="automation-stack">
             <div class="automation-card">
@@ -191,7 +181,7 @@
             </div>
             <div class="automation-card">
               <span class="automation-label">SEMANTIC UI TREE</span>
-              <code>winquick desktop tree --title &quot;Device Configuration&quot;</code>
+              <code>winquick desktop tree --title &quot;WinQuick Demo&quot;</code>
             </div>
             <div class="automation-card active-card">
               <span class="automation-label">INTERACT</span>
@@ -200,7 +190,7 @@
             <div class="automation-card">
               <span class="automation-label">VERIFY</span>
               <code>winquick desktop get --automation-id StatusText</code>
-              <span class="result">Saved: PLC-01</span>
+              <span class="result">Saved: Ada Lovelace / Design / advanced</span>
             </div>
           </div>
         </div>
@@ -259,12 +249,12 @@
         </div>
         <div class="benchmark">
           <span class="bench-label">.NET</span>
-          <strong>~600<span>ms</span></strong>
+          <strong>~450<span>ms</span></strong>
           <small>dotnet --version, SDK capability</small>
         </div>
         <div class="benchmark">
           <span class="bench-label">POWERSHELL</span>
-          <strong>~920<span>ms</span></strong>
+          <strong>~650<span>ms</span></strong>
           <small>PowerShell 7 expression</small>
         </div>
         <div class="benchmark">
@@ -349,7 +339,7 @@
         <div>
           <div class="eyebrow">Get started</div>
           <h2>From zero to real Windows<br>in two commands.</h2>
-          <p>WinQuick handles the runtime setup and verifies it with a real Windows command before declaring it ready. Install it with Homebrew on any Apple Silicon Mac. The build is not signed or notarized, but Homebrew fetches the archive itself, so there is no Gatekeeper step.</p>
+          <p>WinQuick handles the runtime setup and verifies it with a real Windows command before declaring it ready. Homebrew is the quickest route on an Apple Silicon Mac. Archives for Linux and Windows are on the <a href="https://github.com/carlbomsdata/winquick/releases/latest">latest release</a>. The builds are not code-signed, but Homebrew fetches the archive itself, so there is no Gatekeeper step.</p>
         </div>
         <div class="install-terminal terminal">
           <div class="terminal-bar"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div>
