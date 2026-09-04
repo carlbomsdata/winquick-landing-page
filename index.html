@@ -122,20 +122,27 @@
       <div class="split-heading">
         <div>
           <div class="eyebrow">Build & test</div>
-          <h2>Develop Windows software on the machine you have.</h2>
+          <h2>Any Windows program. Not just your own.</h2>
         </div>
-        <p>Cross-build when it makes sense. Build inside Windows when it matters. Either way, WinQuick gives your tests the Windows kernel they actually need.</p>
+        <p>A system tool, a vendor CLI you only have as a Windows binary, or an executable you built a moment ago &mdash; they all run the same way, and the exit code that comes back is the program's own, so <code>&amp;&amp;</code> and CI logic behave exactly as they would on a Windows box.</p>
       </div>
 
       <div class="code-showcase">
         <div class="code-tabs" role="tablist" aria-label="Code examples">
-          <button class="code-tab active" data-tab="dotnet" role="tab">.NET</button>
+          <button class="code-tab active" data-tab="anyexe" role="tab">Any .exe</button>
+          <button class="code-tab" data-tab="dotnet" role="tab">.NET</button>
           <button class="code-tab" data-tab="powershell" role="tab">PowerShell</button>
           <button class="code-tab" data-tab="artifacts" role="tab">Artifacts</button>
           <button class="code-tab" data-tab="winonly" role="tab">Windows-only bug</button>
           <button class="code-tab" data-tab="uitest" role="tab">UI test</button>
         </div>
-        <div class="code-panel active" data-panel="dotnet">
+        <div class="code-panel active" data-panel="anyexe">
+          <div class="code-line"><span class="prompt">$</span> winquick run -- ipconfig /all</div>
+          <div class="code-output">Host Name . . . . : minwinpc</div>
+          <div class="code-line" style="margin-top:14px"><span class="prompt">$</span> winquick run -w . -- 'publish\MyTool.exe' alpha beta</div>
+          <div class="code-output">MyTool running on Microsoft Windows NT 10.0.26100.0 · exit 2</div>
+        </div>
+        <div class="code-panel" data-panel="dotnet">
           <div class="code-line"><span class="prompt">$</span> winquick run -w . -- dotnet test</div>
           <div class="code-output">Passed! 9 tests · 0 failed</div>
         </div>
@@ -174,6 +181,7 @@
             <figcaption>Not a mock-up. The guest's own framebuffer, captured after a script typed the name, chose the department, ticked the box and pressed Save.</figcaption>
           </figure>
 
+
           <div class="automation-stack">
             <div class="automation-card">
               <span class="automation-label">SCREENSHOT</span>
@@ -194,6 +202,12 @@
             </div>
           </div>
         </div>
+
+        <figure class="real-shot real-shot-wide">
+          <img src="assets/screenshots/notepad.png" width="960" height="582"
+               alt="Windows Notepad running inside WinQuick with a line of text typed into it by UI automation">
+          <figcaption>A program nobody wrote for WinQuick: Windows Notepad, launched and typed into from a Mac, with nothing on screen. Task Manager runs the same way.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -326,6 +340,10 @@
         <div class="faq-item">
           <h3>How is it that fast?</h3>
           <p>It does not boot Windows. Windows is booted once, prepared and frozen; each run restores that saved state into a fresh process, runs your command and discards the copy. Booting from scratch takes about nine seconds, and you pay it once.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What will it not run?</h3>
+          <p>The guest is Microsoft's Validation OS, a deliberately minimal Windows. It has the kernel, registry, shell and GUI stack, but not every service a desktop installation carries. Sysinternals' <code>disk2vhd</code> is the clean example: it needs the Volume Shadow Copy service, which the image does not include, so it starts and exits. Its console sibling <code>autorunsc</code>, which only reads the registry, works. <code>winquick run -- sc query &lt;name&gt;</code> answers the question for any tool in a second.</p>
         </div>
         <div class="faq-item">
           <h3>Can I use it in CI?</h3>

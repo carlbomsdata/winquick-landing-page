@@ -480,3 +480,4 @@ h3 { font-size: 21px; font-weight: 600; letter-spacing: -.025em; }
   background: #16181d;
 }
 .feature-shot img { display: block; width: 100%; height: auto; }
+.real-shot-wide { margin: 46px auto 0; max-width: 980px; }
