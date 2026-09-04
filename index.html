@@ -32,6 +32,7 @@
       <a href="#screenshots">Screenshots</a>
       <a href="#desktop">Desktop</a>
       <a href="#performance">Performance</a>
+      <a href="#faq">FAQ</a>
       <a href="#install">Install</a>
     </nav>
     <a class="button button-small button-ghost" href="https://github.com/carlbomsdata/winquick">GitHub</a>
@@ -47,6 +48,10 @@
         <a class="button button-primary" href="#install">Get WinQuick</a>
         <a class="button button-secondary" href="https://github.com/carlbomsdata/winquick">View source</a>
       </div>
+
+      <p class="hero-trust">
+        <span>Apache-2.0, open source</span><span>runs entirely on your machine</span><span>no account, no telemetry</span><span>macOS, Linux and Windows</span>
+      </p>
 
       <div class="terminal terminal-hero" aria-label="WinQuick command example">
         <div class="terminal-bar">
@@ -307,6 +312,35 @@
         <div class="platform active-platform"><span></span><strong>macOS</strong><small>Apple Silicon · HVF</small></div>
         <div class="platform"><span>◇</span><strong>Linux</strong><small>x86_64 / arm64 · KVM</small></div>
         <div class="platform"><span>⊞</span><strong>Windows</strong><small>x86_64 · WHPX · cold boot</small></div>
+      </div>
+    </section>
+
+    <section class="section section-shell faq-section" id="faq">
+      <div class="section-heading">
+        <div class="eyebrow">Before you install</div>
+        <h2>The questions people ask first.</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>Is this just a virtual machine?</h3>
+          <p>Underneath, yes &mdash; QEMU running a real Windows kernel on your platform's own hypervisor. The difference is that you never manage it. There is no VM to create, boot, snapshot, update or clean up, and nothing appears on your screen. A run is a command that returns output and an exit code.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do I need a Windows licence?</h3>
+          <p>You obtain Microsoft's Validation OS image from Microsoft, under Microsoft's licence, and <code>winquick setup</code> fetches it once you accept those terms. WinQuick ships no Microsoft software itself and never redistributes it.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is my source code safe?</h3>
+          <p>Your project is copied into the guest and never copied back, so a build cannot modify it, and the guest has no network adapter at all. Anything you want out, you ask for explicitly with <code>--artifact</code>.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How is it that fast?</h3>
+          <p>It does not boot Windows. Windows is booted once, prepared and frozen; each run restores that saved state into a fresh process, runs your command and discards the copy. Booting from scratch takes about nine seconds, and you pay it once.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I use it in CI?</h3>
+          <p>On a self-hosted runner with hardware virtualisation, yes &mdash; it is an ordinary CLI with real exit codes. Most hosted runners do not expose the virtualisation extensions a guest needs, so it suits your own machines and the local loop before you push.</p>
+        </div>
       </div>
     </section>
 

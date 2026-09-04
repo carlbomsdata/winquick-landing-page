@@ -254,10 +254,11 @@ h3 { font-size: 21px; font-weight: 600; letter-spacing: -.025em; }
 .mini-code span { color: var(--accent-deep); }
 
 .code-showcase { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: #fff; box-shadow: var(--shadow-2); }
-.code-tabs { display: flex; gap: 4px; padding: 9px; border-bottom: 1px solid var(--line); background: var(--soft); }
+.code-tabs { display: flex; flex-wrap: wrap; gap: 4px; padding: 9px; border-bottom: 1px solid var(--line); background: var(--soft); }
 .code-tab { padding: 8px 13px; border: 0; border-radius: 7px; background: transparent; color: #777; font: 500 13px/1 var(--font-sans); cursor: pointer; }
 .code-tab.active { background: #e9f7f2; color: var(--accent-deep); }
-.code-panel { display: none; padding: 32px 30px; background: var(--terminal); color: #eee; font: 14px/2 var(--font-mono); }
+.code-panel { display: none; padding: 32px 30px; background: var(--terminal); color: #eee; font: 14px/2 var(--font-mono); overflow-x: auto; }
+.code-line, .code-output { white-space: pre; }
 .code-panel.active { display: block; }
 .code-output { color: #a9d9c7; }
 
@@ -419,4 +420,30 @@ h3 { font-size: 21px; font-weight: 600; letter-spacing: -.025em; }
   .shot-wide img {
     max-width: 100%;
   }
+}
+
+/* --- trust line, FAQ ------------------------------------------------------ */
+.hero-trust {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.hero-trust span + span::before { content: " · "; color: #c8c8c8; }
+
+.faq-list { display: grid; gap: 14px; margin-top: 40px; }
+.faq-item {
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+.faq-item h3 { margin: 0 0 8px; font-size: 16px; font-weight: 600; }
+.faq-item p { margin: 0; color: var(--body); font-size: 15px; line-height: 1.65; }
+
+@media (max-width: 640px) {
+  .code-panel { padding: 20px 16px; font-size: 12.5px; line-height: 1.9; }
+  .code-tab { padding: 7px 10px; font-size: 12.5px; }
+  .faq-item { padding: 18px 18px; }
+  .hero-trust { font-size: 13px; }
 }
