@@ -6,20 +6,48 @@
   <meta name="theme-color" content="#fafafa">
   <meta name="description" content="WinQuick — Instant disposable Windows environments. Run real Windows commands, builds, tests, and desktop automation locally without managing a VM.">
   <meta property="og:title" content="WinQuick — Instant disposable Windows environments">
-  <meta property="og:description" content="Real Windows. Disposable by default. Ready in milliseconds.">
+  <meta property="og:description" content="Real Windows, disposable by default. Warm runs in about 310 ms on the Apple Silicon reference host.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://carlbomsdata.github.io/winquick-landing-page/">
-  <meta property="og:image" content="https://carlbomsdata.github.io/winquick-landing-page/assets/og.png">
+  <meta property="og:url" content="https://winquick.io/">
+  <meta property="og:image" content="https://winquick.io/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="WinQuick — a Windows command running from a Mac terminal">
+  <meta property="og:site_name" content="WinQuick">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="WinQuick — Instant disposable Windows environments">
-  <meta name="twitter:description" content="Real Windows. Ready in milliseconds.">
-  <meta name="twitter:image" content="https://carlbomsdata.github.io/winquick-landing-page/assets/og.png">
-  <link rel="canonical" href="https://carlbomsdata.github.io/winquick-landing-page/">
+  <meta name="twitter:description" content="Real Windows, disposable by default. About 310 ms per run on Apple Silicon.">
+  <meta name="twitter:image" content="https://winquick.io/assets/og.png">
+  <link rel="canonical" href="https://winquick.io/">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316181d'/%3E%3Ctext x='32' y='43' font-family='ui-monospace,Menlo,monospace' font-size='30' font-weight='700' fill='%237fd88f' text-anchor='middle'%3EWQ%3C/text%3E%3C/svg%3E">
   <title>WinQuick — Instant disposable Windows environments</title>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "WinQuick",
+  "description": "Run commands and desktop applications inside a real, disposable Windows environment, from macOS, Linux or Windows.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "macOS, Linux, Windows",
+  "url": "https://winquick.io/",
+  "downloadUrl": "https://github.com/carlbomsdata/winquick/releases",
+  "license": "https://www.apache.org/licenses/LICENSE-2.0",
+  "softwareVersion": "0.4.0",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Carlboms Data AB"
+  }
+}
+  </script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#top">Skip to content</a>
   <div class="noise" aria-hidden="true"></div>
 
   <header class="site-header">
@@ -38,11 +66,11 @@
     <a class="button button-small button-ghost" href="https://github.com/carlbomsdata/winquick">GitHub</a>
   </header>
 
-  <main id="top">
+  <main id="top" tabindex="-1">
     <section class="hero section-shell">
       <div class="eyebrow"><span class="pulse"></span> Under heavy development &mdash; try it, don't depend on it yet</div>
       <h1>Instant disposable<br><span>Windows environments.</span></h1>
-      <p class="hero-copy">Run real Windows commands, builds, tests and desktop applications locally, from macOS, Linux or Windows. There is a Windows machine involved &mdash; there has to be &mdash; but you never install, boot, patch, snapshot or clean it up. Every run starts clean and is destroyed when it finishes.</p>
+      <p class="hero-copy">WinQuick runs commands and desktop applications inside a real, disposable Windows virtual machine, and manages its whole lifecycle for you. Every run starts clean and is destroyed when it finishes. On the Apple Silicon reference host, a warm run takes about 310 ms.</p>
 
       <div class="hero-actions">
         <a class="button button-primary" href="#install">Get WinQuick</a>
@@ -62,23 +90,18 @@
         <div class="terminal-body">
           <div><span class="prompt">$</span> <span class="command">winquick run -- cmd /c ver</span></div>
           <div class="terminal-output">Microsoft Windows [Version 10.0.26100.8972]</div>
-          <div class="terminal-meta"><span>real Windows kernel</span><span>~280 ms</span><span>discarded after run</span></div>
+          <div class="terminal-meta"><span>real Windows kernel</span><span>~310 ms</span><span>discarded after run</span></div>
         </div>
       </div>
 
       <div class="hero-proof">
-        <div><strong>~280 ms</strong><span>trivial Windows command</span></div>
-        <div><strong>~350 ms</strong><span>Windows desktop session</span></div>
-        <div><strong>&lt; 1 GB</strong><span>minimal base runtime</span></div>
+        <div><strong>~310 ms</strong><span>trivial Windows command</span></div>
+        <div><strong>~340 ms</strong><span>Windows desktop session</span></div>
+        <div><strong>763 MiB</strong><span>Windows guest image</span></div>
         <div><strong>0</strong><span>VMs to babysit</span></div>
       </div>
     </section>
 
-    <section class="ticker" aria-label="WinQuick capabilities">
-      <div class="ticker-track">
-        <span>CMD</span><i></i><span>PowerShell 7</span><i></i><span>.NET 10</span><i></i><span>WPF</span><i></i><span>WinForms</span><i></i><span>UI Automation</span><i></i><span>Artifacts</span><i></i><span>Disposable</span><i></i><span>x64 on ARM64</span><i></i><span>Offline by default</span>
-      </div>
-    </section>
 
     <section class="section section-shell" id="why">
       <div class="section-heading">
@@ -90,9 +113,9 @@
       <div class="feature-grid">
         <article class="feature-card feature-card-large">
           <div class="feature-number">01</div>
-          <figure class="feature-shot"><img src="assets/screenshots/cli-run.png" width="700" height="360" alt="A WinQuick run in a terminal returning the Windows version and an exit code"></figure>
+          <figure class="feature-shot"><img src="assets/screenshots/cli-run.png" alt="A WinQuick run in a terminal returning the Windows version and an exit code" width="1272" height="434" decoding="async" fetchpriority="high"></figure>
           <h3>Real Windows</h3>
-          <p>Not Wine. Not mocked APIs. Your command executes against a genuine Windows ARM64 kernel with native Windows filesystem, registry, process and API behaviour.</p>
+          <p>Not Wine. Not mocked APIs. Your command executes against a genuine Windows kernel &mdash; ARM64 on Apple Silicon, x64 on x86_64 hosts &mdash; with native Windows filesystem, registry, process and API behaviour.</p>
           <div class="mini-code"><span>winquick run --</span> your-command.exe</div>
         </article>
         <article class="feature-card">
@@ -103,7 +126,7 @@
         <article class="feature-card">
           <div class="feature-number">03</div>
           <h3>Built for iteration speed</h3>
-          <p>A prepared Windows state restores in milliseconds. Fast enough to sit inside edit → test → fix loops without feeling like a VM.</p>
+          <p>On Apple Silicon a prepared Windows state restores in milliseconds, fast enough to sit inside edit &rarr; test &rarr; fix loops. A Windows host cold-boots each run instead; see host support below.</p>
         </article>
         <article class="feature-card">
           <div class="feature-number">04</div>
@@ -129,36 +152,36 @@
 
       <div class="code-showcase">
         <div class="code-tabs" role="tablist" aria-label="Code examples">
-          <button class="code-tab active" data-tab="anyexe" role="tab">Any .exe</button>
-          <button class="code-tab" data-tab="dotnet" role="tab">.NET</button>
-          <button class="code-tab" data-tab="powershell" role="tab">PowerShell</button>
-          <button class="code-tab" data-tab="artifacts" role="tab">Artifacts</button>
-          <button class="code-tab" data-tab="winonly" role="tab">Windows-only bug</button>
-          <button class="code-tab" data-tab="uitest" role="tab">UI test</button>
+          <button class="code-tab active" data-tab="anyexe" role="tab" id="tab-anyexe" aria-controls="panel-anyexe" aria-selected="true" tabindex="0">Console .exe</button>
+          <button class="code-tab" data-tab="dotnet" role="tab" id="tab-dotnet" aria-controls="panel-dotnet" aria-selected="false" tabindex="-1">.NET</button>
+          <button class="code-tab" data-tab="powershell" role="tab" id="tab-powershell" aria-controls="panel-powershell" aria-selected="false" tabindex="-1">PowerShell</button>
+          <button class="code-tab" data-tab="artifacts" role="tab" id="tab-artifacts" aria-controls="panel-artifacts" aria-selected="false" tabindex="-1">Artifacts</button>
+          <button class="code-tab" data-tab="winonly" role="tab" id="tab-winonly" aria-controls="panel-winonly" aria-selected="false" tabindex="-1">Windows-only bug</button>
+          <button class="code-tab" data-tab="uitest" role="tab" id="tab-uitest" aria-controls="panel-uitest" aria-selected="false" tabindex="-1">UI test</button>
         </div>
-        <div class="code-panel active" data-panel="anyexe">
+        <div class="code-panel active" data-panel="anyexe" id="panel-anyexe" role="tabpanel" aria-labelledby="tab-anyexe" tabindex="0">
           <div class="code-line"><span class="prompt">$</span> winquick run -- ipconfig /all</div>
           <div class="code-output">Host Name . . . . : minwinpc</div>
           <div class="code-line" style="margin-top:14px"><span class="prompt">$</span> winquick run -w . -- 'publish\MyTool.exe' alpha beta</div>
           <div class="code-output">MyTool running on Microsoft Windows NT 10.0.26100.0 · exit 2</div>
         </div>
-        <div class="code-panel" data-panel="dotnet">
+        <div class="code-panel" data-panel="dotnet" id="panel-dotnet" role="tabpanel" aria-labelledby="tab-dotnet" tabindex="0" hidden>
           <div class="code-line"><span class="prompt">$</span> winquick run -w . -- dotnet test</div>
           <div class="code-output">Passed! 9 tests · 0 failed</div>
         </div>
-        <div class="code-panel" data-panel="powershell">
+        <div class="code-panel" data-panel="powershell" id="panel-powershell" role="tabpanel" aria-labelledby="tab-powershell" tabindex="0" hidden>
           <div class="code-line"><span class="prompt">$</span> winquick run -- pwsh -Command '$PSVersionTable.PSVersion'</div>
           <div class="code-output">7.6.5</div>
         </div>
-        <div class="code-panel" data-panel="artifacts">
+        <div class="code-panel" data-panel="artifacts" id="panel-artifacts" role="tabpanel" aria-labelledby="tab-artifacts" tabindex="0" hidden>
           <div class="code-line"><span class="prompt">$</span> winquick run -w . -a "bin/Release/**" -- dotnet publish -c Release</div>
           <div class="code-output">Artifacts → ./winquick-artifacts/</div>
         </div>
-        <div class="code-panel" data-panel="winonly">
+        <div class="code-panel" data-panel="winonly" id="panel-winonly" role="tabpanel" aria-labelledby="tab-winonly" tabindex="0" hidden>
           <div class="code-line"><span class="prompt">$</span> winquick run -w . -- dotnet test --filter Category=WindowsOnly</div>
           <div class="code-output">Failed! 1 test · the fix is verified before you push</div>
         </div>
-        <div class="code-panel" data-panel="uitest">
+        <div class="code-panel" data-panel="uitest" id="panel-uitest" role="tabpanel" aria-labelledby="tab-uitest" tabindex="0" hidden>
           <div class="code-line"><span class="prompt">$</span> winquick ui-test MyApp.csproj --script smoke.uitest --out ./shots</div>
           <div class="code-output">14 steps passed · screenshots → ./shots</div>
         </div>
@@ -170,14 +193,14 @@
         <div class="section-heading">
           <div class="eyebrow">Windows desktop, headless</div>
           <h2>Build it. Launch it. See it. Use it.</h2>
-          <p>Automated testing of a Windows GUI normally needs a Windows machine with a logged-in desktop. WinQuick builds a WPF or WinForms application, runs it in a real Windows desktop and drives it through Microsoft UI Automation — the interface Windows' own accessibility tools use. Controls are addressed by <code>AutomationId</code>, so a test does not depend on pixel positions or window layout, and a selector matching two elements is an error rather than a guess. Nothing appears on your screen: no QEMU window, no RDP, no VNC.</p>
-            <p>A session is ready in about 350 ms. Launching an application takes a further ~27 ms and its first window appears about 660 ms later; UI Automation reads and clicks are ~20 ms, and a window screenshot ~59 ms. Preparing the desktop environment is a one-time ~17 seconds.</p>
+          <p>Automated testing of a Windows GUI normally needs a Windows machine with a logged-in desktop. WinQuick can build a WPF or WinForms application, run it in a real Windows desktop and drives it through Microsoft UI Automation — the interface Windows' own accessibility tools use. Controls are addressed by <code>AutomationId</code>, so a test does not depend on pixel positions or window layout, and a selector matching two elements is an error rather than a guess. Nothing appears on your screen: no QEMU window, no RDP, no VNC.</p>
+            <p>A session is ready in about 340 ms. Launching an application takes a further ~20 ms, and its first window appears about 660 ms later. A UI Automation read is ~50 ms; clicks and typing wait a further ~250 ms for the UI to settle, so they measure ~305 ms unless you pass <code>--settle 0</code>. A window screenshot is ~125 ms. Preparing the desktop environment is a one-time ~17 seconds.</p>
         </div>
 
         <div class="desktop-demo">
           <figure class="real-shot">
-            <img src="assets/screenshots/ui-automation.png" width="620" height="460"
-                 alt="A WPF application inside WinQuick with its text box, combo box and checkbox filled in by UI automation, and a saved status line">
+            <img src="assets/screenshots/ui-automation.png"
+                 alt="A WPF application inside WinQuick with its text box, combo box and checkbox filled in by UI automation, and a saved status line" width="620" height="460" loading="lazy" decoding="async">
             <figcaption>Not a mock-up. The guest's own framebuffer, captured after a script typed the name, chose the department, ticked the box and pressed Save.</figcaption>
           </figure>
 
@@ -204,9 +227,9 @@
         </div>
 
         <figure class="real-shot real-shot-wide">
-          <img src="assets/screenshots/real-apps.png" width="1280" height="800"
-               alt="Process Monitor, TCPView and other real Windows applications running at once inside WinQuick">
-          <figcaption>Programs nobody wrote for WinQuick, running at once: Process Monitor capturing 43,199 live kernel events, TCPView, VMMap and more. Notepad, Task Manager and a self-contained x64 WPF tool run the same way. Nothing appears on your screen.</figcaption>
+          <img src="assets/screenshots/real-apps.png"
+               alt="Process Monitor, TCPView and other real Windows applications running at once inside WinQuick" width="1280" height="800" loading="lazy" decoding="async">
+          <figcaption>Programs nobody wrote for WinQuick, running at once: Process Monitor capturing live kernel events, TCPView, VMMap and more. Notepad, Task Manager and a self-contained x64 WPF tool run the same way. Nothing appears on your screen.</figcaption>
         </figure>
       </div>
     </section>
@@ -215,33 +238,29 @@
       <div class="section-heading">
         <div class="eyebrow">Real output</div>
         <h2>Every image below is a real run.</h2>
-        <p>Captured by <code>scripts/capture-screenshots.sh</code> in the repository. The timings were measured while the image was being made, and the Windows pictures come from the guest's own framebuffer.</p>
+        <p>Produced by <code>scripts/capture-screenshots.sh</code> in the repository. The terminal images are typeset from output WinQuick actually printed during the capture; the Windows images are the guest's own framebuffer, read back over UI automation. Nothing is mocked up, and the timings were measured as the images were made.</p>
       </div>
 
       <div class="shots">
-        <figure class="shot shot-wide">
-          <img src="assets/screenshots/ui-automation.png" alt="A WPF application in WinQuick with its text box, combo box and checkbox filled in by UI automation" loading="lazy">
-          <figcaption>A real WPF app, driven through Windows UI Automation — typed, selected, toggled, clicked.</figcaption>
-        </figure>
         <figure class="shot">
-          <img src="assets/screenshots/speed.png" alt="Terminal showing five consecutive WinQuick runs at 365, 378, 341, 359 and 363 milliseconds" loading="lazy">
+          <img src="assets/screenshots/speed.png" alt="Terminal showing five consecutive disposable WinQuick warm runs, each timed in milliseconds" width="1272" height="534" loading="lazy" decoding="async">
           <figcaption>Five consecutive disposable environments, measured during capture.</figcaption>
         </figure>
         <figure class="shot">
-          <img src="assets/screenshots/workspace.png" alt="Terminal showing a project copied into Windows and the host file SHA-256 unchanged afterwards" loading="lazy">
+          <img src="assets/screenshots/workspace.png" alt="Terminal showing a project copied into Windows and the host file SHA-256 unchanged afterwards" width="1492" height="584" loading="lazy" decoding="async">
           <figcaption>Your project is copied in. The guest writes to its copy; the original hash is unchanged.</figcaption>
         </figure>
         <figure class="shot">
-          <img src="assets/screenshots/offline.png" alt="Terminal showing the Windows guest has zero IPv4 adapters and cannot ping" loading="lazy">
+          <img src="assets/screenshots/offline.png" alt="Terminal showing the Windows guest has zero IPv4 adapters and cannot ping" width="1272" height="584" loading="lazy" decoding="async">
           <figcaption>Offline by default — the guest has no network adapter at all.</figcaption>
         </figure>
         <figure class="shot">
-          <img src="assets/screenshots/powershell.png" alt="Terminal showing PowerShell 7 running inside a disposable Windows environment" loading="lazy">
+          <img src="assets/screenshots/powershell.png" alt="Terminal showing PowerShell 7 running inside a disposable Windows environment" width="1272" height="384" loading="lazy" decoding="async">
           <figcaption>PowerShell 7, as a capability you add when you want it.</figcaption>
         </figure>
         <figure class="shot shot-wide">
-          <img src="assets/screenshots/desktop.png" alt="A full Windows desktop running inside WinQuick with the demo application open" loading="lazy">
-          <figcaption>A real Windows desktop session, ready in about 350 ms once prepared.</figcaption>
+          <img src="assets/screenshots/desktop.png" alt="A full Windows desktop running inside WinQuick with the demo application open" width="1280" height="800" loading="lazy" decoding="async">
+          <figcaption>A real Windows desktop session, ready in about 340 ms once prepared.</figcaption>
         </figure>
       </div>
     </section>
@@ -258,17 +277,17 @@
       <div class="benchmark-grid">
         <div class="benchmark benchmark-primary">
           <span class="bench-label">CMD</span>
-          <strong>~280<span>ms</span></strong>
+          <strong>~290<span>ms</span></strong>
           <small>trivial warm command</small>
         </div>
         <div class="benchmark">
           <span class="bench-label">.NET</span>
-          <strong>~450<span>ms</span></strong>
+          <strong>~490<span>ms</span></strong>
           <small>dotnet --version, SDK capability</small>
         </div>
         <div class="benchmark">
           <span class="bench-label">POWERSHELL</span>
-          <strong>~650<span>ms</span></strong>
+          <strong>~680<span>ms</span></strong>
           <small>PowerShell 7 expression</small>
         </div>
         <div class="benchmark">
@@ -284,7 +303,7 @@
       <div class="agent-card">
         <div class="agent-copy">
           <div class="eyebrow">For coding agents</div>
-          <h2>Give your agent an actual Windows machine. For milliseconds.</h2>
+          <h2>Give your agent an actual Windows machine.</h2>
           <p>An agent can often reason about a Windows bug from source. WinQuick lets it verify the fix against real Windows — including WPF and WinForms UI.</p>
           <p>WinQuick is a native MCP server, so agents get structured tools rather than shell syntax: build and test on real Windows, launch a WPF or WinForms application, read and drive it through Microsoft UI Automation, and capture real Windows screenshots. Verified with Claude Code.</p>
           <div class="terminal-body compact" style="margin:0 0 18px"><div><span class="prompt">$</span> claude mcp add winquick -- winquick mcp</div></div>
@@ -308,14 +327,14 @@
 
     <section class="section section-shell future-section">
       <div class="section-heading">
-        <div class="eyebrow">One CLI. Any host.</div>
-        <h2>Cross-platform by design.</h2>
+        <div class="eyebrow">Where it runs</div>
+        <h2>Host support.</h2>
         <p>Apple Silicon macOS is where WinQuick is developed, and where every figure on this page was measured. Linux and Windows run the same CLI on their own native accelerator. A Windows host boots the guest from scratch on every run, which costs about 17 seconds and is deliberate — a resumed guest there stalls on timers. On Linux the host side is verified, in that it builds, the tests pass and the diagnostics are correct, but a guest has not yet been booted on real Linux hardware.</p>
       </div>
       <div class="platform-row">
-        <div class="platform active-platform"><span></span><strong>macOS</strong><small>Apple Silicon · HVF</small></div>
-        <div class="platform"><span>◇</span><strong>Linux</strong><small>x86_64 / arm64 · KVM</small></div>
-        <div class="platform"><span>⊞</span><strong>Windows</strong><small>x86_64 · WHPX · cold boot</small></div>
+        <div class="platform active-platform"><span></span><strong>macOS</strong><small>Apple Silicon · HVF</small><small class="platform-status">verified · reference host</small></div>
+        <div class="platform"><span>◇</span><strong>Linux</strong><small>x86_64 / arm64 · KVM</small><small class="platform-status platform-status-partial">experimental · host side only</small></div>
+        <div class="platform"><span>⊞</span><strong>Windows</strong><small>x86_64 · WHPX</small><small class="platform-status">verified · cold boot each run</small></div>
       </div>
     </section>
 
@@ -339,7 +358,7 @@
         </div>
         <div class="faq-item">
           <h3>How is it that fast?</h3>
-          <p>It does not boot Windows. Windows is booted once, prepared and frozen; each run restores that saved state into a fresh process, runs your command and discards the copy. Booting from scratch takes about nine seconds, and you pay it once.</p>
+          <p>On Apple Silicon it does not boot Windows for your command: Windows is booted once, prepared and frozen, and each run restores that saved state into a fresh process and discards the copy. On a Windows host the normal path cold-boots each run instead, because a restored guest there stalls on Hyper-V synthetic timers &mdash; roughly 17 seconds per run. The <a href="https://github.com/carlbomsdata/winquick/blob/main/docs/whpx-resume.md">evidence is in the docs</a>.</p>
         </div>
         <div class="faq-item">
           <h3>What will it not run?</h3>
@@ -376,7 +395,7 @@
       <div class="final-card">
         <div>
           <span class="brand-lockup"><span class="brand-mark">WQ</span> WinQuick</span>
-          <h2>Real Windows.<br>Ready in milliseconds.</h2>
+          <h2>Real Windows.<br>Disposable by default.</h2>
         </div>
         <div class="final-actions">
           <a class="button button-primary" href="https://github.com/carlbomsdata/winquick">Get WinQuick on GitHub</a>
