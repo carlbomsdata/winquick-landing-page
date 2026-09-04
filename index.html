@@ -40,7 +40,7 @@
 
   <main id="top">
     <section class="hero section-shell">
-      <div class="eyebrow"><span class="pulse"></span> Real Windows, without the VM ceremony</div>
+      <div class="eyebrow"><span class="pulse"></span> Under heavy development &mdash; try it, don't depend on it yet</div>
       <h1>Instant disposable<br><span>Windows environments.</span></h1>
       <p class="hero-copy">Run real Windows commands, builds, tests and desktop apps locally. Every run starts clean. No VM to manage. No remote Windows machine. No waiting for a desktop to boot.</p>
 
@@ -76,7 +76,7 @@
 
     <section class="ticker" aria-label="WinQuick capabilities">
       <div class="ticker-track">
-        <span>CMD</span><i></i><span>PowerShell 7</span><i></i><span>.NET 10</span><i></i><span>WPF</span><i></i><span>WinForms</span><i></i><span>UI Automation</span><i></i><span>Artifacts</span><i></i><span>Disposable</span><i></i><span>Offline by default</span>
+        <span>CMD</span><i></i><span>PowerShell 7</span><i></i><span>.NET 10</span><i></i><span>WPF</span><i></i><span>WinForms</span><i></i><span>UI Automation</span><i></i><span>Artifacts</span><i></i><span>Disposable</span><i></i><span>x64 on ARM64</span><i></i><span>Offline by default</span>
       </div>
     </section>
 
@@ -122,9 +122,9 @@
       <div class="split-heading">
         <div>
           <div class="eyebrow">Build & test</div>
-          <h2>Any Windows program. Not just your own.</h2>
+          <h2>Your Windows programs. Console and GUI.</h2>
         </div>
-        <p>A system tool, a vendor CLI you only have as a Windows binary, or an executable you built a moment ago &mdash; they all run the same way, and the exit code that comes back is the program's own, so <code>&amp;&amp;</code> and CI logic behave exactly as they would on a Windows box.</p>
+        <p>Console programs run directly &mdash; a system tool, a vendor CLI you only have as a Windows binary, or something you built a moment ago &mdash; and the exit code that comes back is the program's own, so <code>&amp;&amp;</code> and CI logic behave as they would on a Windows box. Programs with a window need the desktop capability; then they run and can be driven, including x64 binaries on the ARM64 guest.</p>
       </div>
 
       <div class="code-showcase">
@@ -204,9 +204,9 @@
         </div>
 
         <figure class="real-shot real-shot-wide">
-          <img src="assets/screenshots/notepad.png" width="960" height="582"
-               alt="Windows Notepad running inside WinQuick with a line of text typed into it by UI automation">
-          <figcaption>A program nobody wrote for WinQuick: Windows Notepad, launched and typed into from a Mac, with nothing on screen. Task Manager runs the same way.</figcaption>
+          <img src="assets/screenshots/real-apps.png" width="1280" height="800"
+               alt="Process Monitor, TCPView and other real Windows applications running at once inside WinQuick">
+          <figcaption>Programs nobody wrote for WinQuick, running at once: Process Monitor capturing 43,199 live kernel events, TCPView, VMMap and more. Notepad, Task Manager and a self-contained x64 WPF tool run the same way. Nothing appears on your screen.</figcaption>
         </figure>
       </div>
     </section>
@@ -343,7 +343,8 @@
         </div>
         <div class="faq-item">
           <h3>What will it not run?</h3>
-          <p>The guest is Microsoft's Validation OS, a deliberately minimal Windows. It has the kernel, registry, shell and GUI stack, but not every service a desktop installation carries. Sysinternals' <code>disk2vhd</code> is the clean example: it needs the Volume Shadow Copy service, which the image does not include, so it starts and exits. Its console sibling <code>autorunsc</code>, which only reads the registry, works. <code>winquick run -- sc query &lt;name&gt;</code> answers the question for any tool in a second.</p>
+          <p>Two things. A program with a window needs the desktop capability &mdash; the base runtime has no graphics stack, so launching a GUI executable through <code>winquick run</code> fails with a missing-DLL error instead of opening a window.</p>
+          <p>And the guest is Microsoft's Validation OS, a deliberately minimal Windows, so a tool needing a service it does not ship will not work. Sysinternals' <code>disk2vhd</code> is the clear example: it needs the Volume Shadow Copy service, and <code>vssvc.exe</code> is not on Microsoft's media at all, so there is no package to add. Its console sibling <code>autorunsc</code>, which only reads the registry, works. <code>winquick run -- sc query &lt;name&gt;</code> answers the question for any tool in a second.</p>
         </div>
         <div class="faq-item">
           <h3>Can I use it in CI?</h3>
