@@ -57,13 +57,13 @@
         <div class="terminal-body">
           <div><span class="prompt">$</span> <span class="command">winquick run -- cmd /c ver</span></div>
           <div class="terminal-output">Microsoft Windows [Version 10.0.26100.8972]</div>
-          <div class="terminal-meta"><span>real Windows kernel</span><span>~350 ms</span><span>discarded after run</span></div>
+          <div class="terminal-meta"><span>real Windows kernel</span><span>~280 ms</span><span>discarded after run</span></div>
         </div>
       </div>
 
       <div class="hero-proof">
-        <div><strong>~350 ms</strong><span>trivial Windows command</span></div>
-        <div><strong>~380 ms</strong><span>Windows desktop session</span></div>
+        <div><strong>~280 ms</strong><span>trivial Windows command</span></div>
+        <div><strong>~350 ms</strong><span>Windows desktop session</span></div>
         <div><strong>&lt; 1 GB</strong><span>minimal base runtime</span></div>
         <div><strong>0</strong><span>VMs to babysit</span></div>
       </div>
@@ -147,7 +147,7 @@
         <div class="section-heading center-heading">
           <div class="eyebrow">Windows desktop, headless</div>
           <h2>Build it. Launch it. See it. Use it.</h2>
-          <p>WinQuick can run real WPF and WinForms applications, capture the rendered UI and expose semantic Windows UI Automation controls to coding agents. A desktop session is ready in about 380 ms. Launching an application takes a further ~27 ms, and its first window appears about 660 ms after that. UI Automation reads and clicks are ~20 ms; screenshots ~59 ms for a window. Preparing the desktop environment is a one-time ~17 seconds.</p>
+          <p>WinQuick can run real WPF and WinForms applications, capture the rendered UI and expose semantic Windows UI Automation controls to coding agents. A desktop session is ready in about 350 ms. Launching an application takes a further ~27 ms, and its first window appears about 660 ms after that. UI Automation reads and clicks are ~20 ms; screenshots ~59 ms for a window. Preparing the desktop environment is a one-time ~17 seconds.</p>
         </div>
 
         <div class="desktop-demo">
@@ -221,7 +221,7 @@
         </figure>
         <figure class="shot shot-wide">
           <img src="assets/screenshots/desktop.png" alt="A full Windows desktop running inside WinQuick with the demo application open" loading="lazy">
-          <figcaption>A real Windows desktop session, ready in about 380 ms once prepared.</figcaption>
+          <figcaption>A real Windows desktop session, ready in about 350 ms once prepared.</figcaption>
         </figure>
       </div>
     </section>
@@ -238,7 +238,7 @@
       <div class="benchmark-grid">
         <div class="benchmark benchmark-primary">
           <span class="bench-label">CMD</span>
-          <strong>~350<span>ms</span></strong>
+          <strong>~280<span>ms</span></strong>
           <small>trivial warm command</small>
         </div>
         <div class="benchmark">
@@ -290,12 +290,12 @@
       <div class="section-heading">
         <div class="eyebrow">One CLI. Any host.</div>
         <h2>Cross-platform by design.</h2>
-        <p>Apple Silicon macOS is where WinQuick is developed, and where every figure on this page was measured. Linux and Windows hosts run the same CLI on their own native accelerator — a Windows host executes commands but does not get the fast restore path.</p>
+        <p>Apple Silicon macOS is where WinQuick is developed, and where every figure on this page was measured. Linux and Windows run the same CLI on their own native accelerator. A Windows host boots the guest from scratch on every run, which costs about 17 seconds and is deliberate — a resumed guest there stalls on timers. On Linux the host side is verified, in that it builds, the tests pass and the diagnostics are correct, but a guest has not yet been booted on real Linux hardware.</p>
       </div>
       <div class="platform-row">
         <div class="platform active-platform"><span></span><strong>macOS</strong><small>Apple Silicon · HVF</small></div>
-        <div class="platform"><span>◇</span><strong>Linux</strong><small>x86_64 · KVM</small></div>
-        <div class="platform"><span>⊞</span><strong>Windows</strong><small>x86_64 · no fast path</small></div>
+        <div class="platform"><span>◇</span><strong>Linux</strong><small>x86_64 / arm64 · KVM</small></div>
+        <div class="platform"><span>⊞</span><strong>Windows</strong><small>x86_64 · WHPX · cold boot</small></div>
       </div>
     </section>
 
