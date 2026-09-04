@@ -126,6 +126,8 @@
           <button class="code-tab active" data-tab="dotnet" role="tab">.NET</button>
           <button class="code-tab" data-tab="powershell" role="tab">PowerShell</button>
           <button class="code-tab" data-tab="artifacts" role="tab">Artifacts</button>
+          <button class="code-tab" data-tab="winonly" role="tab">Windows-only bug</button>
+          <button class="code-tab" data-tab="uitest" role="tab">UI test</button>
         </div>
         <div class="code-panel active" data-panel="dotnet">
           <div class="code-line"><span class="prompt">$</span> winquick run -w . -- dotnet test</div>
@@ -139,6 +141,14 @@
           <div class="code-line"><span class="prompt">$</span> winquick run -w . -a "bin/Release/**" -- dotnet publish -c Release</div>
           <div class="code-output">Artifacts → ./winquick-artifacts/</div>
         </div>
+        <div class="code-panel" data-panel="winonly">
+          <div class="code-line"><span class="prompt">$</span> winquick run -w . -- dotnet test --filter Category=WindowsOnly</div>
+          <div class="code-output">Failed! 1 test · the fix is verified before you push</div>
+        </div>
+        <div class="code-panel" data-panel="uitest">
+          <div class="code-line"><span class="prompt">$</span> winquick ui-test MyApp.csproj --script smoke.uitest --out ./shots</div>
+          <div class="code-output">14 steps passed · screenshots → ./shots</div>
+        </div>
       </div>
     </section>
 
@@ -147,7 +157,8 @@
         <div class="section-heading center-heading">
           <div class="eyebrow">Windows desktop, headless</div>
           <h2>Build it. Launch it. See it. Use it.</h2>
-          <p>WinQuick can run real WPF and WinForms applications, capture the rendered UI and expose semantic Windows UI Automation controls to coding agents. A desktop session is ready in about 350 ms. Launching an application takes a further ~27 ms, and its first window appears about 660 ms after that. UI Automation reads and clicks are ~20 ms; screenshots ~59 ms for a window. Preparing the desktop environment is a one-time ~17 seconds.</p>
+          <p>Automated testing of a Windows GUI normally needs a Windows machine with a logged-in desktop. WinQuick builds a WPF or WinForms application, runs it in a real Windows desktop and drives it through Microsoft UI Automation — the interface Windows' own accessibility tools use. Controls are addressed by <code>AutomationId</code>, so a test does not depend on pixel positions or window layout, and a selector matching two elements is an error rather than a guess. Nothing appears on your screen: no QEMU window, no RDP, no VNC.</p>
+            <p>A session is ready in about 350 ms. Launching an application takes a further ~27 ms and its first window appears about 660 ms later; UI Automation reads and clicks are ~20 ms, and a window screenshot ~59 ms. Preparing the desktop environment is a one-time ~17 seconds.</p>
         </div>
 
         <div class="desktop-demo">
