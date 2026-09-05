@@ -268,15 +268,7 @@ h3 { font-size: 21px; font-weight: 600; letter-spacing: -.025em; }
 
 /* --- the desktop section shows the real capture, not a drawing ------------ */
 .real-shot { margin: 0; }
-.real-shot img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-2);
-  background: #fff;
-}
+.real-shot .shot-scroll { box-shadow: var(--shadow-2); }
 .real-shot figcaption {
   margin-top: 12px;
   color: var(--muted);
@@ -350,14 +342,15 @@ a:focus-visible, button:focus-visible, [role="tab"]:focus-visible, [role="tabpan
   margin: 54px auto 0;
 }
 
-.hero-shot img {
-  display: block;
-  width: 100%;
-  height: auto;
+.shot-scroll {
   border: 1px solid var(--line);
   border-radius: 12px;
-  box-shadow: var(--shadow-4);
+  overflow: hidden;
+  background: #fff;
 }
+
+.shot-scroll img { display: block; width: 100%; height: auto; }
+.hero-shot .shot-scroll { box-shadow: var(--shadow-4); }
 
 /* ------------------------------------------------------- what it does */
 
@@ -384,6 +377,11 @@ a:focus-visible, button:focus-visible, [role="tab"]:focus-visible, [role="tabpan
 /* Column widths are the two captures' aspect ratios, so both images land at
    the same height and their captions sit on one line. */
 .proof { display: grid; grid-template-columns: 843fr 1000fr; gap: 22px; align-items: start; }
+
+/* Grid items are min-width:auto by default, so a figure sizes itself to the
+   image's min-width and runs off the side of a phone instead of letting the
+   scroll box inside it do its job. */
+.proof > *, .facts-layout > * { min-width: 0; }
 
 /* --------------------------------------------------- facts and speed */
 
@@ -427,6 +425,9 @@ a:focus-visible, button:focus-visible, [role="tab"]:focus-visible, [role="tabpan
 @media (max-width: 900px) {
   .caps { grid-template-columns: 1fr; }
   .proof, .facts-layout { grid-template-columns: 1fr; gap: 28px; }
+  /* Once everything stacks, full-height section padding is just dead screen. */
+  .section, .final-cta { padding: 64px 0; }
+  .section-heading { margin-bottom: 30px; }
 }
 
 @media (max-width: 640px) {
@@ -436,4 +437,28 @@ a:focus-visible, button:focus-visible, [role="tab"]:focus-visible, [role="tabpan
   .install-line code { font-size: 12.5px; line-height: 1.5; }
   .host-table th, .host-table td, .perf th, .perf td { padding: 11px 8px; font-size: 14px; }
   .hero-shot { margin-top: 36px; }
+}
+
+
+@media (max-width: 640px) {
+  /* 96px of padding either side of every section is most of a phone screen. */
+  .section, .final-cta { padding: 52px 0; }
+  .hero { padding-bottom: 8px; }
+  .section-heading { margin-bottom: 26px; }
+
+  /* A desktop capture scaled to 358px is illegible. Let it keep a readable
+     size and scroll sideways instead. */
+  .shot-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .shot-scroll img { min-width: 560px; }
+  .hero-shot .shot-scroll img { min-width: 520px; }
+
+  /* Three columns do not fit, so each host becomes its own block. */
+  .host-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .host-table, .host-table tbody, .host-table tr, .host-table th, .host-table td { display: block; width: 100%; }
+  .host-table tr { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .host-table tr:last-child { border-bottom: 0; }
+  .host-table th, .host-table td { padding: 0; border: 0; }
+  .host-table tbody th { margin-bottom: 4px; font-size: 16px; }
+  .host-table td { color: var(--muted); font-size: 14px; }
+  .host-table td + td { margin-top: 2px; }
 }
