@@ -87,8 +87,8 @@
 
       <div class="host-summary" aria-label="Current host support">
         <div><strong>macOS Apple Silicon</strong><span>reference host, ~310 ms warm</span></div>
-        <div><strong>Windows x86_64</strong><span>verified, ~17 s cold boot per run</span></div>
-        <div><strong>Linux x86_64 / arm64</strong><span>experimental, not measured</span></div>
+        <div><strong>Windows x86_64</strong><span>under development · cold boot each run</span></div>
+        <div><strong>Linux x86_64 / arm64</strong><span>under development · not yet verified</span></div>
       </div>
     </section>
 
@@ -162,7 +162,7 @@ winquick ui-test ./publish --script smoke.uitest</code>
         <div class="section-intro dark-intro">
           <p class="kicker">Performance and support</p>
           <h2>macOS is the reference host today.</h2>
-          <p>WinQuick is built for macOS, Linux and Windows, but the hosts are not equally mature yet.</p>
+          <p>macOS on Apple Silicon is the supported host. Windows and Linux are under active development and not ready to depend on yet.</p>
         </div>
 
         <div class="benchmark-grid" aria-label="Reference host performance">
@@ -184,13 +184,13 @@ winquick ui-test ./publish --script smoke.uitest</code>
           </div>
           <div class="host-row">
             <strong>Windows x86_64</strong>
-            <div><span class="mobile-label">Status</span><span class="status status-ready">Verified</span></div>
-            <div><span class="mobile-label">Current behavior</span><span>Cold boots each run, roughly 17 s</span></div>
+            <div><span class="mobile-label">Status</span><span class="status status-development">In development</span></div>
+            <div><span class="mobile-label">Current behavior</span><span>Runs a command; cold boots each run, roughly 17 s. Not ready to depend on.</span></div>
           </div>
           <div class="host-row">
             <strong>Linux x86_64 / arm64</strong>
-            <div><span class="mobile-label">Status</span><span class="status status-experimental">Experimental</span></div>
-            <div><span class="mobile-label">Current behavior</span><span>Host side verified; guest not yet booted on physical Linux hardware</span></div>
+            <div><span class="mobile-label">Status</span><span class="status status-development">In development</span></div>
+            <div><span class="mobile-label">Current behavior</span><span>Builds and installs; the guest has not yet booted on physical Linux hardware.</span></div>
           </div>
         </div>
         <a class="text-link text-link-dark" href="https://github.com/carlbomsdata/winquick#hosts">Full host details <span aria-hidden="true">→</span></a>
@@ -218,18 +218,18 @@ winquick ui-test ./publish --script smoke.uitest</code>
 
         <article class="install-card">
           <div>
-            <span class="platform-status">Verified</span>
+            <span class="platform-status">In development</span>
             <h3>Windows · x86_64</h3>
-            <p>Download the current Windows archive. QEMU 11 or newer is required. Commands cold-boot the guest, about 17 s each. Desktop sessions need a self-built patched QEMU.</p>
+            <p>Under development. Download the current Windows archive. QEMU 11 or newer is required. Commands cold-boot the guest, about 17 s each. Desktop sessions need a self-built patched QEMU.</p>
           </div>
           <a class="text-link" href="https://github.com/carlbomsdata/winquick/releases/latest">Download release <span aria-hidden="true">→</span></a>
         </article>
 
         <article class="install-card">
           <div>
-            <span class="platform-status">Experimental</span>
+            <span class="platform-status">In development</span>
             <h3>Linux · x86_64 / arm64</h3>
-            <p>Download the matching archive. Guest execution still needs physical-hardware verification.</p>
+            <p>Under development. Download the matching archive. Guest execution still needs physical-hardware verification.</p>
           </div>
           <a class="text-link" href="https://github.com/carlbomsdata/winquick/releases/latest">Download release <span aria-hidden="true">→</span></a>
         </article>

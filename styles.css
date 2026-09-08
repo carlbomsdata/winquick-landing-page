@@ -489,6 +489,7 @@ h3 {
 
 .status-ready { background: rgba(91, 209, 154, .12); color: #7ee0b3; }
 .status-experimental { background: rgba(255, 202, 92, .12); color: #f1c86e; }
+.status-development { background: rgba(255, 202, 92, .12); color: #f1c86e; }
 
 .text-link-dark { margin-top: 18px; color: #7ee0b3; }
 .text-link-dark:hover { color: #a0ecc9; }
