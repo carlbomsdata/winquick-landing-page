@@ -32,7 +32,7 @@
     "url": "https://winquick.io/",
     "downloadUrl": "https://github.com/carlbomsdata/winquick/releases/latest",
     "license": "https://www.apache.org/licenses/LICENSE-2.0",
-    "softwareVersion": "0.4.2",
+    "softwareVersion": "0.5.0",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -66,7 +66,7 @@
 
   <main id="main" tabindex="-1">
     <section class="hero shell">
-      <p class="release-line">v0.4.2 <span aria-hidden="true">·</span> active development</p>
+      <p class="release-line">v0.5.0 <span aria-hidden="true">·</span> active development</p>
       <h1>Instant disposable Windows environments.</h1>
       <p class="hero-copy">WinQuick runs Windows commands, builds, tests and desktop applications from macOS, Linux or Windows. Each run starts clean and is discarded when it finishes.</p>
       <div class="hero-actions">
@@ -109,6 +109,12 @@
           <p>One command reads the project, picks the toolchain from its shape, installs the .NET capability it needs, restores packages offline, builds in a disposable Windows, and keeps the output. Run any command yourself with <code>winquick run</code> when you need to.</p>
           <code>winquick build ./MyApp
 # -&gt; ./winquick-artifacts</code>
+        </article>
+        <article class="capability">
+          <h3>Bring your own tools</h3>
+          <p>It is a real Windows, so it runs more than .NET. Register any toolchain once — a C compiler, Go, Node, Python, a portable CLI — and every run keeps it cached and on <code>PATH</code>, with no re-copy.</p>
+          <code>winquick tool add go --from ./go
+winquick run -w . -- go build ./...</code>
         </article>
         <article class="capability">
           <h3>Run desktop applications</h3>
