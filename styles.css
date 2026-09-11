@@ -244,8 +244,8 @@ h1 {
 
 .host-summary {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  width: min(760px, 100%);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(620px, 100%);
   margin: 22px auto 0;
   border: 1px solid var(--line);
   border-radius: 12px;
@@ -496,7 +496,7 @@ h3 {
 
 .install-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
