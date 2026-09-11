@@ -834,9 +834,10 @@ h3 {
 /* Proof from real runs — real screenshots, not mockups. */
 .proof-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-  align-items: start;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  max-width: 940px;
+  margin-inline: auto;
 }
 .proof-card {
   margin: 0;
