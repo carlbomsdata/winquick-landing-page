@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f8f8">
-  <meta name="description" content="WinQuick runs Windows commands, builds, tests and desktop applications in disposable local environments on macOS (Apple Silicon).">
+  <meta name="description" content="Run the Windows commands, builds, tests, desktop apps and vendor .exe tools your Mac can't run natively — in clean, disposable local Windows environments on Apple Silicon. No Windows VM to maintain.">
   <meta property="og:title" content="WinQuick — disposable Windows environments">
-  <meta property="og:description" content="Run Windows commands, builds, tests and desktop applications without maintaining a Windows VM.">
+  <meta property="og:description" content="Run Windows commands, builds, tests, desktop apps and Windows-only .exe tools from an Apple Silicon Mac — in disposable local Windows. No VM to patch or babysit.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://winquick.io/">
   <meta property="og:image" content="https://winquick.io/assets/og.png">
@@ -16,8 +16,7 @@
   <meta property="og:site_name" content="WinQuick">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="WinQuick — disposable Windows environments">
-  <meta name="twitter:description" content="Run Windows commands, builds, tests and desktop applications without maintaining a Windows VM.">
-  <meta name="twitter:image" content="https://winquick.io/assets/og.png">
+  <meta name="twitter:description" content="Run Windows commands, builds, tests, desktop apps and Windows-only .exe tools from an Apple Silicon Mac — in disposable local Windows. No VM to patch or babysit.">
   <link rel="canonical" href="https://winquick.io/">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2315181b'/%3E%3Ctext x='32' y='43' font-family='ui-monospace,Menlo,monospace' font-size='30' font-weight='700' fill='%235bd19a' text-anchor='middle'%3EWQ%3C/text%3E%3C/svg%3E">
   <title>WinQuick — disposable Windows environments</title>
@@ -26,7 +25,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "WinQuick",
-    "description": "Run Windows commands, builds, tests and desktop applications in disposable local environments.",
+    "description": "Run Windows commands, builds, tests, desktop apps and Windows-only .exe tools from an Apple Silicon Mac in clean, disposable local Windows environments.",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "macOS",
     "url": "https://winquick.io/",
@@ -56,9 +55,9 @@
         <span>WinQuick</span>
       </a>
       <nav class="nav" aria-label="Primary navigation">
-        <a href="#capabilities">Capabilities</a>
-        <a href="#hosts">Speed</a>
+        <a href="#capabilities">Use cases</a>
         <a href="#examples">Examples</a>
+        <a href="#hosts">Speed</a>
         <a href="#install">Install</a>
       </nav>
       <a class="header-link" href="https://github.com/carlbomsdata/winquick">GitHub</a>
@@ -67,9 +66,9 @@
 
   <main id="main" tabindex="-1">
     <section class="hero shell">
-      <p class="release-line">v0.5.1 <span aria-hidden="true">·</span> active development</p>
+      <p class="release-line">For Apple Silicon Macs <span aria-hidden="true">·</span> v0.5.1</p>
       <h1>Instant disposable Windows environments.</h1>
-      <p class="hero-copy">Run, build, test and automate Windows software from your Mac — commands, projects, desktop apps, and Windows-only tools. Each run starts from the same clean Windows and discards its writable state when it finishes.</p>
+      <p class="hero-copy">Run the Windows commands, builds, tests, desktop apps and vendor <code>.exe</code> tools your Mac can't run natively — in clean, disposable local Windows. Each run starts from the same clean state and throws its writable disk away. No long-lived Windows VM to patch, snapshot or babysit.</p>
       <div class="hero-actions">
         <a class="button button-primary" href="#install">Install WinQuick</a>
         <a class="button button-secondary" href="https://github.com/carlbomsdata/winquick">View on GitHub</a>
@@ -116,12 +115,12 @@
         </article>
         <article class="capability">
           <h3>Automate desktop apps</h3>
-          <p>Launch a Windows GUI app in a headless session, capture screenshots, and drive the controls it exposes through Microsoft UI Automation. WPF and WinForms are verified end to end.</p>
+          <p>Launch a GUI app that runs on Validation OS in a headless session, capture screenshots, and drive the controls it exposes through Microsoft UI Automation. WPF and WinForms are verified end to end.</p>
           <code>winquick ui-test MyApp.csproj --script smoke.uitest</code>
         </article>
         <article class="capability">
           <h3>Give agents a Windows runtime</h3>
-          <p>A native MCP server exposes the run, desktop and UI-automation tools over stdio, so Claude, Cursor or any script can drive real Windows — without a Windows machine.</p>
+          <p>A native MCP server exposes the run, desktop and UI-automation tools over stdio, so Claude, Cursor or any script can drive real Windows — without keeping a Windows box around.</p>
           <code>claude mcp add winquick -- winquick mcp</code>
         </article>
         <article class="capability">
@@ -129,6 +128,121 @@
           <p>Changes made during a run are discarded; the base image and caches are kept. The guest starts with no network device, and only the artifacts you request are copied out. It is not a hardened malware sandbox.</p>
           <code>winquick run -w . -a "bin/**" -- dotnet publish -c Release</code>
         </article>
+      </div>
+    </section>
+
+    <section class="section section-muted" id="why">
+      <div class="shell">
+        <div class="section-intro">
+          <p class="kicker">Why not just a VM</p>
+          <h2>For running Windows software from a Mac, a VM is a lot to keep alive.</h2>
+        </div>
+        <div class="compare-grid">
+          <article class="compare-card">
+            <h3>A Windows VM</h3>
+            <ul>
+              <li>Boot it, then keep it running between tasks</li>
+              <li>Patch Windows, manage disk and snapshots</li>
+              <li>Copy files in and out by hand</li>
+              <li>State from the last run is still there</li>
+              <li>Gigabytes resident whether you are using it or not</li>
+            </ul>
+          </article>
+          <article class="compare-card compare-card-us">
+            <h3>WinQuick</h3>
+            <ul>
+              <li>One command; nothing runs between tasks</li>
+              <li>Nothing to patch — the run's disk is thrown away</li>
+              <li>Workspace copied in, only requested artifacts out</li>
+              <li>Every run starts from the same clean Windows</li>
+              <li>Local, scriptable, and warm in about 310 ms</li>
+            </ul>
+          </article>
+        </div>
+        <p class="compare-note">This is about one workflow — running, building and testing Windows software from a Mac. WinQuick is not a general-purpose VM manager and does not replace one for interactive Windows use.</p>
+      </div>
+    </section>
+
+    <section class="section shell" id="examples">
+      <div class="section-intro">
+        <p class="kicker">See it work</p>
+        <h2>Real jobs, from your Mac, into a clean Windows and back.</h2>
+      </div>
+
+      <div class="example-grid">
+        <div class="terminal">
+          <div class="terminal-bar">
+            <span class="terminal-title">Run a Windows-only vendor tool</span>
+            <button class="copy-button" type="button" data-copy="winquick run -w . -a report.xml -- tools\VendorTool.exe --export report.xml">Copy</button>
+          </div>
+          <div class="terminal-body">
+            <div><span class="prompt">$</span> winquick run -w . -a report.xml -- tools\VendorTool.exe --export report.xml</div>
+            <div class="terminal-output">VendorTool 8.2 — export complete</div>
+            <div class="terminal-output">→ report.xml retrieved into ./winquick-artifacts</div>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-bar">
+            <span class="terminal-title">Build a legacy .NET Framework app</span>
+            <button class="copy-button" type="button" data-copy="winquick build ./LegacyApp -c Release">Copy</button>
+          </div>
+          <div class="terminal-body">
+            <div><span class="prompt">$</span> winquick build ./LegacyApp -c Release</div>
+            <div class="terminal-output">→ .NET Framework, packages restored offline</div>
+            <div class="terminal-output">Build succeeded — kept ./winquick-artifacts/LegacyApp.exe</div>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-bar">
+            <span class="terminal-title">Add a toolchain once, reuse every run</span>
+            <button class="copy-button" type="button" data-copy="winquick tool add go --from ./go-win-arm64">Copy</button>
+          </div>
+          <div class="terminal-body">
+            <div><span class="prompt">$</span> winquick tool add go --from ./go-win-arm64</div>
+            <div class="terminal-output">Tool 'go' ready (272 MiB). On PATH in every run.</div>
+            <div><span class="prompt">$</span> winquick run -w . -a app.exe -- go build -o app.exe .</div>
+            <div class="terminal-output">→ ./winquick-artifacts/app.exe  (PE32+ Aarch64)</div>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-bar">
+            <span class="terminal-title">Drive a desktop app, capture screenshots</span>
+            <button class="copy-button" type="button" data-copy="winquick ui-test MyApp.csproj --script smoke.uitest --out ./shots">Copy</button>
+          </div>
+          <div class="terminal-body">
+            <div><span class="prompt">$</span> winquick ui-test MyApp.csproj --script smoke.uitest --out ./shots</div>
+            <div class="terminal-output">click SaveButton → get StatusText = "Saved"</div>
+            <div class="terminal-output">6 steps passed — screenshots in ./shots</div>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-bar">
+            <span class="terminal-title">Give an agent a Windows runtime</span>
+            <button class="copy-button" type="button" data-copy="claude mcp add winquick -- winquick mcp">Copy</button>
+          </div>
+          <div class="terminal-body">
+            <div><span class="prompt">$</span> claude mcp add winquick -- winquick mcp</div>
+            <div class="terminal-output">Added winquick — 13 tools: windows_run, desktop_*, ui_*</div>
+            <div class="terminal-output"># structured tools for running Windows commands</div>
+            <div class="terminal-output"># and driving desktop apps that expose UI Automation</div>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-bar">
+            <span class="terminal-title">Put a Windows build in a script</span>
+            <button class="copy-button" type="button" data-copy="winquick run -w . -- cmd /c build.bat">Copy</button>
+          </div>
+          <div class="terminal-body">
+            <div><span class="prompt">$</span> winquick run -w . -- cmd /c build.bat &amp;&amp; echo OK</div>
+            <div class="terminal-output">Build OK — 42 tests passed</div>
+            <div class="terminal-output">OK &nbsp;&nbsp;# exit code preserved, so &amp;&amp; and CI logic just work</div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -149,31 +263,18 @@
           </li>
           <li>
             <span class="step-number">3</span>
-            <div><strong>Requested artifacts copied out</strong><span>The disposable environment is then discarded.</span></div>
+            <div><strong>Requested artifacts copied out</strong><span>The run's writable disk is then discarded.</span></div>
           </li>
         </ol>
       </div>
     </section>
 
-    <section class="section shell desktop-section">
-      <div class="desktop-copy">
-        <p class="kicker">Desktop applications</p>
-        <h2>Run and test Windows desktop applications.</h2>
-        <p>The desktop capability starts a headless Windows desktop. Any GUI app can be launched and screenshotted; apps that expose Microsoft UI Automation can also be inspected and driven by control rather than by pixel. WPF and WinForms are verified end to end — built inside Windows, then driven — while an app with no useful automation surface can still be captured, just not clicked.</p>
-        <a class="text-link" href="https://github.com/carlbomsdata/winquick/blob/main/docs/desktop.md">Desktop documentation <span aria-hidden="true">→</span></a>
-      </div>
-      <figure class="product-shot">
-        <img src="assets/screenshots/ui-automation.png" alt="A WPF application running inside WinQuick and controlled through Microsoft UI Automation" width="620" height="460" loading="lazy" decoding="async">
-        <figcaption>A desktop session driving an application through Microsoft UI Automation.</figcaption>
-      </figure>
-    </section>
-
     <section class="section section-dark" id="hosts">
       <div class="shell">
         <div class="section-intro dark-intro">
-          <p class="kicker">Fast enough to forget it is a VM</p>
+          <p class="kicker">Fast enough to put in a script</p>
           <h2>A real Windows command in about a third of a second.</h2>
-          <p>A full Windows VM takes minutes to boot and then sits there eating memory. WinQuick resumes a prepared Windows in ~310 ms, runs your command, and throws that machine away — no VM to boot, nothing to patch. The base image and caches are kept so the next run is just as fast.</p>
+          <p>The first <code>winquick setup</code> downloads and prepares the Windows runtime once. Every run after that resumes a prepared Windows in ~310 ms — no long-lived VM to keep patched and running between tasks.</p>
         </div>
 
         <div class="benchmark-grid" aria-label="Measured workloads">
@@ -184,7 +285,7 @@
           <div><strong>~2.9 s</strong><span><code>go build</code> → a Windows .exe</span></div>
           <div><strong>~0.7 s</strong><span>prettier formats real JS</span></div>
         </div>
-        <p class="benchmark-note">Warm prepared guest on Apple Silicon M4 Pro, macOS 26; <code>go build</code> and prettier ran offline through tool volumes. 100 runs of <code>cmd /c ver</code>: p99 319 ms, zero failures. Apple Silicon is the supported host, where every figure was measured; Windows and Linux are a future plan.</p>
+        <p class="benchmark-note">Measured on Apple Silicon M4 Pro, macOS 26, warm prepared guest. <code>go build</code> and prettier ran offline through tool volumes. 100 runs of <code>cmd /c ver</code> gave p99 319 ms, zero failures. The first setup is a one-time download and prepare, not part of these figures. Apple Silicon is the supported host; Windows and Linux are a future plan.</p>
 
         <div class="host-list" aria-label="Host support">
           <div class="host-list-head" aria-hidden="true">
@@ -210,64 +311,17 @@
       </div>
     </section>
 
-    <section class="section section-muted" id="examples">
-      <div class="shell">
-        <div class="section-intro">
-          <p class="kicker">See it work</p>
-          <h2>From your Mac, into a clean Windows, and back.</h2>
-        </div>
-
-        <div class="example-grid">
-          <div class="terminal">
-            <div class="terminal-bar">
-              <span class="terminal-title">Build a .NET project, keep the output</span>
-              <button class="copy-button" type="button" data-copy="winquick build ./MyApp -c Release">Copy</button>
-            </div>
-            <div class="terminal-body">
-              <div><span class="prompt">$</span> winquick build ./MyApp -c Release</div>
-              <div class="terminal-output">→ restoring packages offline</div>
-              <div class="terminal-output">→ building in a clean Windows</div>
-              <div class="terminal-output">Build succeeded — kept ./winquick-artifacts/MyApp.dll</div>
-            </div>
-          </div>
-
-          <div class="terminal">
-            <div class="terminal-bar">
-              <span class="terminal-title">Compile a Windows .exe — no Windows in sight</span>
-              <button class="copy-button" type="button" data-copy="winquick run -w . -a app.exe -- go build -o app.exe .">Copy</button>
-            </div>
-            <div class="terminal-body">
-              <div><span class="prompt">$</span> winquick tool add go --from ./go</div>
-              <div class="terminal-output">Tool 'go' ready (272 MiB). On PATH in every run.</div>
-              <div><span class="prompt">$</span> winquick run -w . -a app.exe -- go build -o app.exe .</div>
-              <div class="terminal-output">→ ./winquick-artifacts/app.exe  (PE32+ Aarch64)</div>
-            </div>
-          </div>
-
-          <div class="terminal">
-            <div class="terminal-bar">
-              <span class="terminal-title">Run a real Windows tool, get its output</span>
-              <button class="copy-button" type="button" data-copy="winquick run -- pwsh -NoProfile -Command &quot;$PSVersionTable.OS&quot;">Copy</button>
-            </div>
-            <div class="terminal-body">
-              <div><span class="prompt">$</span> winquick run -- pwsh -NoProfile -Command "$PSVersionTable.OS"</div>
-              <div class="terminal-output">Microsoft Windows 10.0.26100</div>
-            </div>
-          </div>
-
-          <div class="terminal">
-            <div class="terminal-bar">
-              <span class="terminal-title">Drive a desktop app, capture a screenshot</span>
-              <button class="copy-button" type="button" data-copy="winquick ui-test MyApp.csproj --script smoke.uitest">Copy</button>
-            </div>
-            <div class="terminal-body">
-              <div><span class="prompt">$</span> winquick ui-test MyApp.csproj --script smoke.uitest</div>
-              <div class="terminal-output">click SaveButton → get StatusText = "Saved"</div>
-              <div class="terminal-output">6 steps passed — shots in ./winquick-artifacts</div>
-            </div>
-          </div>
-        </div>
+    <section class="section section-muted shell desktop-section">
+      <div class="desktop-copy">
+        <p class="kicker">Desktop applications</p>
+        <h2>Run and test Windows desktop applications.</h2>
+        <p>The desktop capability starts a headless Windows desktop. GUI apps that run on Validation OS can be launched and screenshotted; apps that expose Microsoft UI Automation can also be inspected and driven by control rather than by pixel. WPF and WinForms are verified end to end — built inside Windows, then driven — while an app with no useful automation surface can still be captured, just not clicked.</p>
+        <a class="text-link" href="https://github.com/carlbomsdata/winquick/blob/main/docs/desktop.md">Desktop documentation <span aria-hidden="true">→</span></a>
       </div>
+      <figure class="product-shot">
+        <img src="assets/screenshots/ui-automation.png" alt="A WPF application running inside WinQuick and controlled through Microsoft UI Automation" width="620" height="460" loading="lazy" decoding="async">
+        <figcaption>A desktop session driving an application through Microsoft UI Automation.</figcaption>
+      </figure>
     </section>
 
     <section class="section shell" id="install">
@@ -317,8 +371,23 @@
           <button class="copy-button copy-button-light" type="button" data-copy="winquick setup --accept-microsoft-terms">Copy</button>
         </div>
       </div>
+    </section>
 
-      <p class="install-note">WinQuick is open source under Apache-2.0. It runs locally, requires no account and sends no telemetry. It is intended for development and testing, not as a hardened malware sandbox.</p>
+    <section class="section section-muted" id="limits">
+      <div class="shell">
+        <div class="section-intro">
+          <p class="kicker">Honest limits</p>
+          <h2>What it does not do — so you can trust what it does.</h2>
+        </div>
+        <ul class="more-features" aria-label="Limitations">
+          <li><strong>macOS Apple Silicon only</strong> — Windows and Linux host paths exist in the tree but are a future plan, not supported.</li>
+          <li><strong>The guest is minimal</strong> — Microsoft Validation OS. A tool that needs a Windows service it lacks will not run.</li>
+          <li><strong>Not every GUI is drivable</strong> — apps launch and screenshot, but only those exposing UI Automation can be clicked.</li>
+          <li><strong>Homebrew is the path today</strong> — a direct archive download is unsigned until Developer ID notarization exists.</li>
+          <li><strong>Not a malware sandbox</strong> — it is a hardware-VM boundary for your own builds and tools, not an audited containment system.</li>
+          <li><strong>No account, no telemetry, no daemon</strong> — it runs locally and sends nothing anywhere.</li>
+        </ul>
+      </div>
     </section>
   </main>
 
