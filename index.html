@@ -105,11 +105,10 @@
           <code>winquick run -- your-tool.exe</code>
         </article>
         <article class="capability">
-          <h3>Build and test</h3>
-          <p>Copy a project into Windows, run the build or test suite, then retrieve only the artifacts you request. .NET is an optional capability, and the guest has no network, so packages are cached on the host first.</p>
-          <code>winquick capability install dotnet-sdk
-winquick cache sync
-winquick run -w . -- dotnet test</code>
+          <h3>Build a project</h3>
+          <p>One command reads the project, picks the toolchain from its shape, installs the .NET capability it needs, restores packages offline, builds in a disposable Windows, and keeps the output. Run any command yourself with <code>winquick run</code> when you need to.</p>
+          <code>winquick build ./MyApp
+# -&gt; ./winquick-artifacts</code>
         </article>
         <article class="capability">
           <h3>Run desktop applications</h3>
