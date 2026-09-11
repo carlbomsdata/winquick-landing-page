@@ -430,19 +430,21 @@ h3 {
 
 .benchmark-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* 1px gap over a line-coloured background draws dividers on both axes, so any
+     number of cells in any number of rows stays clean. */
+  gap: 1px;
   overflow: hidden;
   border: 1px solid #31383d;
   border-radius: 14px;
-  background: var(--dark-2);
+  background: #31383d;
 }
 
 .benchmark-grid > div {
   min-width: 0;
   padding: 23px 22px;
+  background: var(--dark-2);
 }
-
-.benchmark-grid > div + div { border-left: 1px solid #31383d; }
 .benchmark-grid strong, .benchmark-grid span { display: block; }
 .benchmark-grid strong { font-size: clamp(23px, 3vw, 32px); letter-spacing: -.03em; }
 .benchmark-grid span { margin-top: 4px; color: #abb3b8; font-size: 13px; }
@@ -613,8 +615,6 @@ h3 {
   .desktop-copy { max-width: 680px; }
 
   .benchmark-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .benchmark-grid > div:nth-child(3) { border-left: 0; border-top: 1px solid #31383d; }
-  .benchmark-grid > div:nth-child(4) { border-top: 1px solid #31383d; }
 
   .setup-box { grid-template-columns: 1fr; }
 }
@@ -655,13 +655,6 @@ h3 {
   .install-card { padding: 22px; }
 
   .benchmark-grid { grid-template-columns: 1fr; }
-  .benchmark-grid > div + div,
-  .benchmark-grid > div:nth-child(3),
-  .benchmark-grid > div:nth-child(4) {
-    border-top: 1px solid #31383d;
-    border-left: 0;
-  }
-
   .benchmark-grid > div { padding: 18px; }
 
   .host-list {
@@ -760,4 +753,28 @@ h3 {
 .example-grid .terminal-body { min-height: 96px; }
 @media (max-width: 760px) {
   .example-grid { grid-template-columns: 1fr; }
+}
+
+.more-features {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px 28px;
+  margin: 34px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.more-features li {
+  color: var(--body);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.more-features strong { color: var(--ink); }
+.more-features code {
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: var(--surface);
+  font-size: 0.86em;
+}
+@media (max-width: 920px) {
+  .more-features { grid-template-columns: 1fr; }
 }

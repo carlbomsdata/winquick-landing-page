@@ -105,8 +105,8 @@
           <code>winquick run -w . -- dotnet test</code>
         </article>
         <article class="capability">
-          <h3>Build a project</h3>
-          <p>One command reads the project, picks the toolchain from its shape, installs the .NET capability it needs, restores packages offline, builds in a disposable Windows, and keeps the output. Run any command yourself with <code>winquick run</code> when you need to.</p>
+          <h3>Build any .NET</h3>
+          <p>Framework 2.0 through 4.8.1, netstandard, net6 through net10, SDK-style or classic — even legacy 3.5, verified to be the old runtime. One command restores packages offline and keeps the output.</p>
           <code>winquick build ./MyApp
 # -&gt; ./winquick-artifacts</code>
         </article>
@@ -124,6 +124,15 @@ winquick capability install desktop
 winquick ui-test ./publish --script smoke.uitest</code>
         </article>
       </div>
+
+      <ul class="more-features" aria-label="More capabilities">
+        <li><strong>MCP server for agents</strong> — expose run, build and desktop to Claude, Cursor, CI and any script: <code>winquick mcp</code>.</li>
+        <li><strong>Offline package cache</strong> — restore NuGet on the host once, then build with no network in the guest.</li>
+        <li><strong>Any Windows software</strong> — Sysinternals, kernel-driver tools, even x64 binaries under emulation.</li>
+        <li><strong>Persistent sessions</strong> — <code>start</code> a Windows once, drive it, screenshot it, <code>stop</code> and it is gone.</li>
+        <li><strong>Exact I/O for CI</strong> — stdout, stderr and the exit code come back unchanged, so <code>&amp;&amp;</code> and CI logic just work.</li>
+        <li><strong>Nothing to maintain</strong> — no VM to patch, no daemon, no account, no telemetry.</li>
+      </ul>
     </section>
 
     <section class="section section-muted">
@@ -170,13 +179,15 @@ winquick ui-test ./publish --script smoke.uitest</code>
           <p>A full Windows VM takes minutes to boot and then sits there eating memory. WinQuick resumes a prepared Windows in ~310 ms, runs your command, and throws the machine away — nothing to boot, nothing to maintain, nothing left behind.</p>
         </div>
 
-        <div class="benchmark-grid" aria-label="Host performance">
-          <div><strong>~310 ms</strong><span><code>cmd /c ver</code>, warm</span></div>
+        <div class="benchmark-grid" aria-label="Measured workloads">
+          <div><strong>~310 ms</strong><span>clean Windows, <code>cmd /c ver</code></span></div>
           <div><strong>~520 ms</strong><span><code>dotnet --version</code></span></div>
-          <div><strong>~690 ms</strong><span>PowerShell start-up</span></div>
-          <div><strong>0 failures</strong><span>100-run p99 319 ms</span></div>
+          <div><strong>~690 ms</strong><span>PowerShell 7 start-up</span></div>
+          <div><strong>~340 ms</strong><span>desktop session start</span></div>
+          <div><strong>~2.9 s</strong><span><code>go build</code> → a Windows .exe</span></div>
+          <div><strong>~0.7 s</strong><span>prettier formats real JS</span></div>
         </div>
-        <p class="benchmark-note">Medians of a warm prepared guest on Apple Silicon M4 Pro, macOS 26. Apple Silicon is the supported host, where every figure was measured; Windows and Linux are a future plan.</p>
+        <p class="benchmark-note">Warm prepared guest on Apple Silicon M4 Pro, macOS 26; <code>go build</code> and prettier ran offline through tool volumes. 100 runs of <code>cmd /c ver</code>: p99 319 ms, zero failures. Apple Silicon is the supported host, where every figure was measured; Windows and Linux are a future plan.</p>
 
         <div class="host-list" aria-label="Host support">
           <div class="host-list-head" aria-hidden="true">
