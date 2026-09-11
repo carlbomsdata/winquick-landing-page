@@ -296,7 +296,9 @@ h3 {
 
 .capability-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  /* six cards: 3+3 on desktop, 2+2+2 on tablet, single column on phones.
+     min(100%, …) keeps a card from overflowing a narrow viewport. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 18px;
 }
 
@@ -602,7 +604,6 @@ h3 {
   .header-inner { grid-template-columns: 1fr auto; }
   .nav { display: none; }
 
-  .capability-grid,
   .install-grid { grid-template-columns: 1fr; }
 
   .capability,

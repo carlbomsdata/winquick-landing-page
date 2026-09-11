@@ -67,9 +67,9 @@
 
   <main id="main" tabindex="-1">
     <section class="hero shell">
-      <p class="release-line">v0.5.0 <span aria-hidden="true">·</span> active development</p>
+      <p class="release-line">v0.5.1 <span aria-hidden="true">·</span> active development</p>
       <h1>Instant disposable Windows environments.</h1>
-      <p class="hero-copy">WinQuick runs Windows commands, builds, tests and desktop applications from your Mac. Each run starts clean and is discarded when it finishes.</p>
+      <p class="hero-copy">Run, build, test and automate Windows software from your Mac — commands, projects, desktop apps, and Windows-only tools. Each run starts from the same clean Windows and discards its writable state when it finishes.</p>
       <div class="hero-actions">
         <a class="button button-primary" href="#install">Install WinQuick</a>
         <a class="button button-secondary" href="https://github.com/carlbomsdata/winquick">View on GitHub</a>
@@ -94,45 +94,42 @@
 
     <section class="section shell" id="capabilities">
       <div class="section-intro">
-        <p class="kicker">What it does</p>
-        <h2>Use Windows as a local execution target.</h2>
+        <p class="kicker">What you can do</p>
+        <h2>Run, build, test and automate Windows — from a Mac.</h2>
       </div>
 
       <div class="capability-grid">
         <article class="capability">
-          <h3>Throwaway Windows for any command</h3>
-          <p>Every run gets a clean, real Windows, runs your build, test or tool, hands back stdout, stderr and the exit code, and is discarded. Nothing to maintain, nothing leaks between runs.</p>
-          <code>winquick run -w . -- dotnet test</code>
+          <h3>Run Windows software</h3>
+          <p>Windows commands, <code>.exe</code> tools, vendor and legacy closed-source utilities, PowerShell — with stdout, stderr and the exit code returned unchanged. Sysinternals and x64 binaries run under emulation.</p>
+          <code>winquick run -- pwsh -File .\build.ps1</code>
         </article>
         <article class="capability">
-          <h3>Build any .NET</h3>
-          <p>Framework 2.0 through 4.8.1, netstandard, net6 through net10, SDK-style or classic — even legacy 3.5, verified to be the old runtime. One command restores packages offline and keeps the output.</p>
-          <code>winquick build ./MyApp
-# -&gt; ./winquick-artifacts</code>
+          <h3>Build and test projects</h3>
+          <p>Copy a workspace into Windows, build or test, and pull back only the artifacts you name. Modern .NET and .NET Framework down to legacy targets, with packages restored offline first.</p>
+          <code>winquick build ./MyApp -c Release</code>
         </article>
         <article class="capability">
           <h3>Bring your own tools</h3>
-          <p>It is a real Windows, so it runs more than .NET. Register any toolchain once — a C compiler, Go, Node, Python, a portable CLI — and every run keeps it cached and on <code>PATH</code>, with no re-copy.</p>
-          <code>winquick tool add go --from ./go
-winquick run -w . -- go build ./...</code>
+          <p>Register a Windows toolchain once as a cached volume; every disposable run then has it on <code>PATH</code>, with no re-copy of the toolchain. Verified with Go, Node, Python, Zig and a C compiler.</p>
+          <code>winquick tool add go --from ./go</code>
         </article>
         <article class="capability">
-          <h3>Run desktop applications</h3>
-          <p>Launch Windows desktop applications in a headless session, capture screenshots, and drive controls exposed through Microsoft UI Automation. A desktop session needs both capabilities.</p>
-          <code>winquick capability install dotnet-sdk
-winquick capability install desktop
-winquick ui-test ./publish --script smoke.uitest</code>
+          <h3>Automate desktop apps</h3>
+          <p>Launch a Windows GUI app in a headless session, capture screenshots, and drive the controls it exposes through Microsoft UI Automation. WPF and WinForms are verified end to end.</p>
+          <code>winquick ui-test MyApp.csproj --script smoke.uitest</code>
+        </article>
+        <article class="capability">
+          <h3>Give agents a Windows runtime</h3>
+          <p>A native MCP server exposes the run, desktop and UI-automation tools over stdio, so Claude, Cursor or any script can drive real Windows — without a Windows machine.</p>
+          <code>claude mcp add winquick -- winquick mcp</code>
+        </article>
+        <article class="capability">
+          <h3>Disposable and offline</h3>
+          <p>Changes made during a run are discarded; the base image and caches are kept. The guest starts with no network device, and only the artifacts you request are copied out. It is not a hardened malware sandbox.</p>
+          <code>winquick run -w . -a "bin/**" -- dotnet publish -c Release</code>
         </article>
       </div>
-
-      <ul class="more-features" aria-label="More capabilities">
-        <li><strong>MCP server for agents</strong> — expose run, build and desktop to Claude, Cursor, CI and any script: <code>winquick mcp</code>.</li>
-        <li><strong>Offline package cache</strong> — restore NuGet on the host once, then build with no network in the guest.</li>
-        <li><strong>Real Windows software</strong> — Sysinternals, kernel-driver tools, even x64 binaries under emulation. The guest is minimal, so a tool needing a service it lacks is the exception.</li>
-        <li><strong>Persistent sessions</strong> — <code>start</code> a Windows once, drive it, screenshot it, <code>stop</code> and it is gone.</li>
-        <li><strong>Exact I/O for CI</strong> — stdout, stderr and the exit code come back unchanged, so <code>&amp;&amp;</code> and CI logic just work.</li>
-        <li><strong>Nothing to maintain</strong> — no VM to patch, no daemon, no account, no telemetry.</li>
-      </ul>
     </section>
 
     <section class="section section-muted">
@@ -144,11 +141,11 @@ winquick ui-test ./publish --script smoke.uitest</code>
         <ol class="run-flow">
           <li>
             <span class="step-number">1</span>
-            <div><strong>Workspace copied in</strong><span>Your source on the host is not modified.</span></div>
+            <div><strong>Workspace copied in</strong><span>A copy, so changes inside Windows are not copied back.</span></div>
           </li>
           <li>
             <span class="step-number">2</span>
-            <div><strong>Windows runs clean</strong><span>The guest has no network access — isolated by design.</span></div>
+            <div><strong>Windows runs clean</strong><span>The guest starts with no QEMU network device.</span></div>
           </li>
           <li>
             <span class="step-number">3</span>
@@ -162,7 +159,7 @@ winquick ui-test ./publish --script smoke.uitest</code>
       <div class="desktop-copy">
         <p class="kicker">Desktop applications</p>
         <h2>Run and test Windows desktop applications.</h2>
-        <p>The desktop capability starts a headless Windows desktop. WinQuick can launch Windows applications and capture screenshots of them. Applications that expose controls through Microsoft UI Automation can also be inspected and driven. WPF and WinForms projects can additionally be built inside Windows before being tested.</p>
+        <p>The desktop capability starts a headless Windows desktop. Any GUI app can be launched and screenshotted; apps that expose Microsoft UI Automation can also be inspected and driven by control rather than by pixel. WPF and WinForms are verified end to end — built inside Windows, then driven — while an app with no useful automation surface can still be captured, just not clicked.</p>
         <a class="text-link" href="https://github.com/carlbomsdata/winquick/blob/main/docs/desktop.md">Desktop documentation <span aria-hidden="true">→</span></a>
       </div>
       <figure class="product-shot">
@@ -292,7 +289,7 @@ winquick ui-test ./publish --script smoke.uitest</code>
           <div>
             <span class="platform-status">Supported host</span>
             <h3>macOS · Apple Silicon</h3>
-            <p>Homebrew installs WinQuick and its host dependencies.</p>
+            <p>Homebrew is the supported install path — it pulls in QEMU and hivex and is not quarantined by Gatekeeper. A direct archive download works too, but is unsigned until notarized.</p>
           </div>
           <div class="install-command">
             <code>brew install carlbomsdata/tap/winquick</code>
