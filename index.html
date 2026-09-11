@@ -128,7 +128,7 @@ winquick ui-test ./publish --script smoke.uitest</code>
       <ul class="more-features" aria-label="More capabilities">
         <li><strong>MCP server for agents</strong> — expose run, build and desktop to Claude, Cursor, CI and any script: <code>winquick mcp</code>.</li>
         <li><strong>Offline package cache</strong> — restore NuGet on the host once, then build with no network in the guest.</li>
-        <li><strong>Any Windows software</strong> — Sysinternals, kernel-driver tools, even x64 binaries under emulation.</li>
+        <li><strong>Real Windows software</strong> — Sysinternals, kernel-driver tools, even x64 binaries under emulation. The guest is minimal, so a tool needing a service it lacks is the exception.</li>
         <li><strong>Persistent sessions</strong> — <code>start</code> a Windows once, drive it, screenshot it, <code>stop</code> and it is gone.</li>
         <li><strong>Exact I/O for CI</strong> — stdout, stderr and the exit code come back unchanged, so <code>&amp;&amp;</code> and CI logic just work.</li>
         <li><strong>Nothing to maintain</strong> — no VM to patch, no daemon, no account, no telemetry.</li>
@@ -176,7 +176,7 @@ winquick ui-test ./publish --script smoke.uitest</code>
         <div class="section-intro dark-intro">
           <p class="kicker">Fast enough to forget it is a VM</p>
           <h2>A real Windows command in about a third of a second.</h2>
-          <p>A full Windows VM takes minutes to boot and then sits there eating memory. WinQuick resumes a prepared Windows in ~310 ms, runs your command, and throws the machine away — nothing to boot, nothing to maintain, nothing left behind.</p>
+          <p>A full Windows VM takes minutes to boot and then sits there eating memory. WinQuick resumes a prepared Windows in ~310 ms, runs your command, and throws that machine away — no VM to boot, nothing to patch. The base image and caches are kept so the next run is just as fast.</p>
         </div>
 
         <div class="benchmark-grid" aria-label="Measured workloads">
