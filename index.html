@@ -68,7 +68,8 @@
     <section class="hero shell">
       <p class="release-line">For Apple Silicon Macs <span aria-hidden="true">·</span> v0.5.1</p>
       <h1>Instant disposable Windows environments.</h1>
-      <p class="hero-copy">Run Windows software from macOS without maintaining a long-lived Windows VM. WinQuick gives Apple Silicon Macs a clean local Windows environment for commands, builds, tests, desktop sessions and Windows-only tools. Each run starts from a prepared state, returns stdout, stderr, the exit code and any requested artifacts, then discards its writable changes.</p>
+      <p class="hero-copy">Run Windows software from macOS without maintaining a Windows VM.</p>
+      <p class="hero-sub">Use WinQuick for commands, builds, tests, desktop sessions and Windows-only tools. Each run starts clean, returns output and requested artifacts, then discards its writable state.</p>
       <div class="hero-actions">
         <a class="button button-primary" href="#install">Install WinQuick</a>
         <a class="button button-secondary" href="https://github.com/carlbomsdata/winquick">View on GitHub</a>
@@ -279,6 +280,23 @@
             <div><strong>Requested artifacts copied out</strong><span>The run's writable state is then discarded.</span></div>
           </li>
         </ol>
+      </div>
+    </section>
+
+    <section class="section shell" id="proof">
+      <div class="section-intro">
+        <p class="kicker">From real runs</p>
+        <h2>Captured from the running product.</h2>
+      </div>
+      <div class="proof-grid">
+        <figure class="proof-card">
+          <img src="assets/screenshots/real-apps.png" alt="Several real Windows desktop applications open at once inside a WinQuick desktop session" width="1280" height="800" loading="lazy" decoding="async">
+          <figcaption>Real Windows desktop applications, launched in a WinQuick session and read back from the guest's own framebuffer.</figcaption>
+        </figure>
+        <figure class="proof-card">
+          <img src="assets/screenshots/artifacts.png" alt="A winquick run command that writes a file inside Windows and copies only the requested artifact back to the host" width="1772" height="484" loading="lazy" decoding="async">
+          <figcaption>A workspace goes in; only the file named with <code>-a</code> comes back to the host. Output typeset from a real run.</figcaption>
+        </figure>
       </div>
     </section>
 

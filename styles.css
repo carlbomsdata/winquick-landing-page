@@ -820,3 +820,50 @@ h3 {
 @media (max-width: 760px) {
   .compare-grid { grid-template-columns: 1fr; }
 }
+
+/* Split hero: prominent one-line subhead, smaller supporting line. */
+.hero-copy { margin-bottom: 12px; }
+.hero-sub {
+  max-width: 640px;
+  margin: 0 auto 30px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Proof from real runs — real screenshots, not mockups. */
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+.proof-card {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+}
+.proof-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid var(--line);
+}
+.proof-card figcaption {
+  margin: 0;
+  padding: 14px 18px;
+  color: var(--body);
+  font-size: 14px;
+  line-height: 1.55;
+}
+.proof-card figcaption code {
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: var(--surface);
+  font-size: 0.9em;
+}
+@media (max-width: 760px) {
+  .proof-grid { grid-template-columns: 1fr; }
+}
