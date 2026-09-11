@@ -99,9 +99,9 @@
 
       <div class="capability-grid">
         <article class="capability">
-          <h3>Run Windows commands</h3>
-          <p>Run a Windows executable and get its stdout, stderr and exit code back on the host.</p>
-          <code>winquick run -- your-tool.exe</code>
+          <h3>Throwaway Windows for any command</h3>
+          <p>Every run gets a clean, real Windows, runs your build, test or tool, hands back stdout, stderr and the exit code, and is discarded. Nothing to maintain, nothing leaks between runs.</p>
+          <code>winquick run -w . -- dotnet test</code>
         </article>
         <article class="capability">
           <h3>Build a project</h3>
