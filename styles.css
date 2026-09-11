@@ -740,3 +740,14 @@ h3 {
   background: var(--surface);
   font-size: 13px;
 }
+
+.example-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.example-grid .terminal { box-shadow: none; }
+.example-grid .terminal-body { min-height: 96px; }
+@media (max-width: 760px) {
+  .example-grid { grid-template-columns: 1fr; }
+}

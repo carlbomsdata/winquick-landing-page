@@ -57,7 +57,8 @@
       </a>
       <nav class="nav" aria-label="Primary navigation">
         <a href="#capabilities">Capabilities</a>
-        <a href="#hosts">Host support</a>
+        <a href="#hosts">Speed</a>
+        <a href="#examples">Examples</a>
         <a href="#install">Install</a>
       </nav>
       <a class="header-link" href="https://github.com/carlbomsdata/winquick">GitHub</a>
@@ -138,7 +139,7 @@ winquick ui-test ./publish --script smoke.uitest</code>
           </li>
           <li>
             <span class="step-number">2</span>
-            <div><strong>Windows runs clean</strong><span>The guest has no network adapter by default.</span></div>
+            <div><strong>Windows runs clean</strong><span>The guest has no network access — isolated by design.</span></div>
           </li>
           <li>
             <span class="step-number">3</span>
@@ -164,18 +165,18 @@ winquick ui-test ./publish --script smoke.uitest</code>
     <section class="section section-dark" id="hosts">
       <div class="shell">
         <div class="section-intro dark-intro">
-          <p class="kicker">Performance and support</p>
-          <h2>Built for macOS on Apple Silicon.</h2>
-          <p>Apple Silicon is the supported host, where WinQuick is developed and where every figure below was measured. Windows and Linux are a future plan, not something to depend on yet.</p>
+          <p class="kicker">Fast enough to forget it is a VM</p>
+          <h2>A real Windows command in about a third of a second.</h2>
+          <p>A full Windows VM takes minutes to boot and then sits there eating memory. WinQuick resumes a prepared Windows in ~310 ms, runs your command, and throws the machine away — nothing to boot, nothing to maintain, nothing left behind.</p>
         </div>
 
         <div class="benchmark-grid" aria-label="Host performance">
-          <div><strong>~310 ms</strong><span><code>cmd /c ver</code></span></div>
+          <div><strong>~310 ms</strong><span><code>cmd /c ver</code>, warm</span></div>
           <div><strong>~520 ms</strong><span><code>dotnet --version</code></span></div>
-          <div><strong>~690 ms</strong><span>PowerShell</span></div>
-          <div><strong>~340 ms</strong><span>desktop start</span></div>
+          <div><strong>~690 ms</strong><span>PowerShell start-up</span></div>
+          <div><strong>0 failures</strong><span>100-run p99 319 ms</span></div>
         </div>
-        <p class="benchmark-note">Medians of a warm prepared guest on Apple Silicon M4 Pro, macOS 26.</p>
+        <p class="benchmark-note">Medians of a warm prepared guest on Apple Silicon M4 Pro, macOS 26. Apple Silicon is the supported host, where every figure was measured; Windows and Linux are a future plan.</p>
 
         <div class="host-list" aria-label="Host support">
           <div class="host-list-head" aria-hidden="true">
@@ -198,6 +199,66 @@ winquick ui-test ./publish --script smoke.uitest</code>
           </div>
         </div>
         <a class="text-link text-link-dark" href="https://github.com/carlbomsdata/winquick#host-support">Full host details <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section section-muted" id="examples">
+      <div class="shell">
+        <div class="section-intro">
+          <p class="kicker">See it work</p>
+          <h2>From your Mac, into a clean Windows, and back.</h2>
+        </div>
+
+        <div class="example-grid">
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-title">Build a .NET project, keep the output</span>
+              <button class="copy-button" type="button" data-copy="winquick build ./MyApp -c Release">Copy</button>
+            </div>
+            <div class="terminal-body">
+              <div><span class="prompt">$</span> winquick build ./MyApp -c Release</div>
+              <div class="terminal-output">→ restoring packages offline</div>
+              <div class="terminal-output">→ building in a clean Windows</div>
+              <div class="terminal-output">Build succeeded — kept ./winquick-artifacts/MyApp.dll</div>
+            </div>
+          </div>
+
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-title">Compile a Windows .exe — no Windows in sight</span>
+              <button class="copy-button" type="button" data-copy="winquick run -w . -a app.exe -- go build -o app.exe .">Copy</button>
+            </div>
+            <div class="terminal-body">
+              <div><span class="prompt">$</span> winquick tool add go --from ./go</div>
+              <div class="terminal-output">Tool 'go' ready (272 MiB). On PATH in every run.</div>
+              <div><span class="prompt">$</span> winquick run -w . -a app.exe -- go build -o app.exe .</div>
+              <div class="terminal-output">→ ./winquick-artifacts/app.exe  (PE32+ Aarch64)</div>
+            </div>
+          </div>
+
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-title">Run a real Windows tool, get its output</span>
+              <button class="copy-button" type="button" data-copy="winquick run -- pwsh -NoProfile -Command &quot;$PSVersionTable.OS&quot;">Copy</button>
+            </div>
+            <div class="terminal-body">
+              <div><span class="prompt">$</span> winquick run -- pwsh -NoProfile -Command "$PSVersionTable.OS"</div>
+              <div class="terminal-output">Microsoft Windows 10.0.26100</div>
+            </div>
+          </div>
+
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-title">Drive a desktop app, capture a screenshot</span>
+              <button class="copy-button" type="button" data-copy="winquick ui-test MyApp.csproj --script smoke.uitest">Copy</button>
+            </div>
+            <div class="terminal-body">
+              <div><span class="prompt">$</span> winquick ui-test MyApp.csproj --script smoke.uitest</div>
+              <div class="terminal-output">click SaveButton → get StatusText = "Saved"</div>
+              <div class="terminal-output">6 steps passed — shots in ./winquick-artifacts</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
