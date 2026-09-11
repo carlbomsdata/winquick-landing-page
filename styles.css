@@ -725,3 +725,18 @@ h3 {
     animation-iteration-count: 1 !important;
   }
 }
+
+.req-list {
+  margin: 0 0 34px;
+  padding-left: 20px;
+  color: var(--body);
+  font-size: 15px;
+  line-height: 1.7;
+}
+.req-list li { margin-bottom: 4px; }
+.req-list code {
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: var(--surface);
+  font-size: 13px;
+}
