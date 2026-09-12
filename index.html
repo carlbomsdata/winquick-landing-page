@@ -4,7 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f8f8">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta name="description" content="WinQuick gives Apple Silicon Macs a clean local Windows execution environment for commands, builds, tests, desktop sessions and Windows-only tools — without maintaining a long-lived Windows VM.">
+  <meta name="keywords" content="WinQuick, disposable Windows, Windows on Mac, Apple Silicon, run Windows exe on macOS, Windows VM alternative, .NET on macOS, headless Windows, MCP Windows runtime">
   <meta property="og:title" content="WinQuick — disposable Windows environments">
   <meta property="og:description" content="Run Windows software from macOS without maintaining a long-lived Windows VM. A clean local Windows environment for commands, builds, tests, desktop sessions and Windows-only tools.">
   <meta property="og:type" content="website">
@@ -27,11 +29,23 @@
     "name": "WinQuick",
     "description": "WinQuick gives Apple Silicon Macs a clean local Windows execution environment for commands, builds, tests, desktop sessions and Windows-only tools.",
     "applicationCategory": "DeveloperApplication",
-    "operatingSystem": "macOS",
+    "applicationSubCategory": "Virtualization",
+    "operatingSystem": "macOS 13+ (Apple Silicon)",
+    "softwareVersion": "0.5.1",
     "url": "https://winquick.io/",
     "downloadUrl": "https://github.com/carlbomsdata/winquick/releases/latest",
+    "softwareHelp": "https://github.com/carlbomsdata/winquick#readme",
     "license": "https://www.apache.org/licenses/LICENSE-2.0",
-    "softwareVersion": "0.5.1",
+    "image": "https://winquick.io/assets/og.png",
+    "screenshot": "https://winquick.io/assets/screenshots/desktop.png",
+    "featureList": [
+      "Run Windows commands, .exe tools and PowerShell from macOS",
+      "Build and test .NET and .NET Framework projects",
+      "Persistent cached Windows toolchains on PATH",
+      "Headless Windows desktop automation with screenshots and UI Automation",
+      "MCP server exposing a Windows runtime to agents",
+      "Disposable, offline-by-default runs"
+    ],
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -39,7 +53,8 @@
     },
     "author": {
       "@type": "Organization",
-      "name": "Carlboms Data AB"
+      "name": "Carlboms Data AB",
+      "url": "https://winquick.io/"
     }
   }
   </script>

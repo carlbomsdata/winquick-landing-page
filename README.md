@@ -1,6 +1,6 @@
 # WinQuick landing page
 
-Static landing page for [WinQuick](https://github.com/carlbomsdata/winquick) — **Instant disposable Windows environments.**
+Static landing page for [WinQuick](https://github.com/carlbomsdata/winquick), published at **[winquick.io](https://winquick.io)** — instant disposable Windows environments for Apple Silicon Macs: run, build, test and automate Windows software from macOS.
 
 ## Local preview
 
